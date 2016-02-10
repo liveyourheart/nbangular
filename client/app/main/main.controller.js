@@ -14,6 +14,9 @@ class MainController {
     $scope.teamImage = 'nbangular.png';
     $scope.primaryColor = '#aeaeae';
     $scope.secondaryColor = '#ffffff';
+    $scope.teamID = 0;
+    $scope.roster = undefined;
+    $scope.coaches = undefined;
 
     //watches select of teams and updates info
     $scope.$watch('selectedTeam', function(newVal, oldVal){
@@ -27,11 +30,19 @@ class MainController {
         $scope.teamImage = $scope.league[$scope.selectedTeamId].img;
         $scope.primaryColor = $scope.league[$scope.selectedTeamId].primaryColor;
         $scope.secondaryColor = $scope.league[$scope.selectedTeamId].secondaryColor;
-
+        $scope.teamID = $scope.league[$scope.selectedTeamId].teamId;
+        $scope.getRoster($scope.teamID);
       }
     });
 
-
+    $scope.getRoster = function(teamID) {
+      console.log('firing');
+      $http.get('/api/rosters/' + teamID).then(response =>{
+        $scope.coaches = response.data.commonTeamRoster;
+        $scope.roster = response.data.commonTeamRoster;
+        console.log($scope.roster);
+      });
+    };
 
     $http.get('/api/things').then(response => {
       this.awesomeThings = response.data;
@@ -49,6 +60,8 @@ class MainController {
       this.$http.delete('/api/things/' + thing._id);
     }
   }
+
+
 
 angular.module('nbaPlaygroundApp')
   .controller('MainController', MainController);

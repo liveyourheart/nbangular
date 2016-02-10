@@ -1,19 +1,17 @@
 /**
  * Using Rails-like standard naming convention for endpoints.
- * GET     /api/teams              ->  index
- * POST    /api/teams              ->  create
- * GET     /api/teams/:id          ->  show
- * PUT     /api/teams/:id          ->  update
- * DELETE  /api/teams/:id          ->  destroy
+ * GET     /api/rosters              ->  index
+ * POST    /api/rosters              ->  create
+ * GET     /api/rosters/:id          ->  show
+ * PUT     /api/rosters/:id          ->  update
+ * DELETE  /api/rosters/:id          ->  destroy
  */
 
 'use strict';
 
 import _ from 'lodash';
-import Team from './team.model';
-var nba = require('nba');
-var teams = nba.teams;
-
+import Roster from './roster.model';
+var nba = require('nba').usePromises();
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -62,43 +60,45 @@ function handleError(res, statusCode) {
   };
 }
 
-// Gets a list of Teams
+// Gets a list of Rosters
 export function index(req, res) {
-  Team.findAsync()
-    .then(respondWithResult(res))
-    .catch(handleError(res));
+
+  nba.api.commonTeamRoster({teamId: 1610612752})
+  .then(respondWithResult(res))
+  .catch(handleError(res));
 }
 
-// Gets a single Team from the DB
+// Gets a single Roster from the DB
 export function show(req, res) {
-  Team.findByIdAsync(req.params.id)
-    .then(handleEntityNotFound(res))
+  var teamId = req.params.id;
+  console.log('it\'s working!');
+  nba.api.commonTeamRoster({teamId: teamId})
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Creates a new Team in the DB
+// Creates a new Roster in the DB
 export function create(req, res) {
-  Team.createAsync(req.body)
+  Roster.createAsync(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
 }
 
-// Updates an existing Team in the DB
+// Updates an existing Roster in the DB
 export function update(req, res) {
   if (req.body._id) {
     delete req.body._id;
   }
-  Team.findByIdAsync(req.params.id)
+  Roster.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(saveUpdates(req.body))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Deletes a Team from the DB
+// Deletes a Roster from the DB
 export function destroy(req, res) {
-  Team.findByIdAsync(req.params.id)
+  Roster.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
     .catch(handleError(res));

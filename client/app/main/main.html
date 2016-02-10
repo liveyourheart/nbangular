@@ -30,6 +30,66 @@ body{
       </select>
 
       <h1 class="text-center">{{selectedTeam}}</h1>
+
+      <div ng-show="selectedTeamId > -1">
+
+        <h4  class="text-center">Roster:</h4>
+
+        <div class="table-responsive">
+          <table class="table">
+            <tr>
+              <td>
+                #
+              </td>
+              <td>
+                POS
+              </td>
+              <td>
+                Player
+              </td>
+              <td>
+              Height
+              </td>
+              <td>
+                Weight
+              </td>
+              <td>
+                School
+              </td>
+              <td>
+                Experience
+              </td>
+            </tr>
+            <tr ng-repeat="player in roster | orderBy: 'player.num'">
+              <td>
+                {{player.num}}
+              </td>
+              <td>
+                {{player.position}}
+              </td>
+              <td>
+                {{player.player}}
+              </td>
+              <td>
+                {{player.height}}
+              </td>
+              <td>
+                {{player.weight}}
+              </td>
+              <td>
+                {{player.school}}
+              </td>
+              <td>
+                {{player.exp}}
+              </td>
+            </tr>
+          </table>
+        </div>
+
+      </div>
+
+
+
     </div>
   </div>
 </div>
