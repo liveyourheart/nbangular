@@ -1,16 +1,16 @@
 /**
  * Using Rails-like standard naming convention for endpoints.
- * GET     /api/teamStats              ->  index
- * POST    /api/teamStats              ->  create
- * GET     /api/teamStats/:id          ->  show
- * PUT     /api/teamStats/:id          ->  update
- * DELETE  /api/teamStats/:id          ->  destroy
+ * GET     /api/teamSplits              ->  index
+ * POST    /api/teamSplits              ->  create
+ * GET     /api/teamSplits/:id          ->  show
+ * PUT     /api/teamSplits/:id          ->  update
+ * DELETE  /api/teamSplits/:id          ->  destroy
  */
 
 'use strict';
 
 import _ from 'lodash';
-import TeamStat from './teamStat.model';
+import TeamSplit from './teamSplit.model';
 var nba = require('nba').usePromises();
 
 function respondWithResult(res, statusCode) {
@@ -60,42 +60,42 @@ function handleError(res, statusCode) {
   };
 }
 
-// Gets a list of TeamStats
+// Gets a list of TeamSplits
 export function index(req, res) {
-  nba.api.teamSplits({teamId: 1610612760})
+  nba.api.teamHistoricalLeaders({teamId: 1610612760})
     .then(respondWithResult(res))
-    .catch(handleError(res));
+    .catch(handleError(res))
 }
 
-// Gets a single TeamStat from the DB
+// Gets a single TeamSplit from the DB
 export function show(req, res) {
-  nba.api.teamInfoCommon({teamId: req.params.id})
+    nba.api.teamSplits({teamId: req.params.id})
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Creates a new TeamStat in the DB
+// Creates a new TeamSplit in the DB
 export function create(req, res) {
-  TeamStat.createAsync(req.body)
+  TeamSplit.createAsync(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
 }
 
-// Updates an existing TeamStat in the DB
+// Updates an existing TeamSplit in the DB
 export function update(req, res) {
   if (req.body._id) {
     delete req.body._id;
   }
-  TeamStat.findByIdAsync(req.params.id)
+  TeamSplit.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(saveUpdates(req.body))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Deletes a TeamStat from the DB
+// Deletes a TeamSplit from the DB
 export function destroy(req, res) {
-  TeamStat.findByIdAsync(req.params.id)
+  TeamSplit.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
     .catch(handleError(res));

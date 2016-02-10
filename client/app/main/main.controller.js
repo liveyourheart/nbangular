@@ -19,6 +19,7 @@ class MainController {
     $scope.coaches = undefined;
     $scope.teamStats = undefined;
     $scope.teamInfo = undefined;
+    $scope.teamDashboard = undefined;
 
     //watches select of teams and updates info
     $scope.$watch('selectedTeam', function(newVal, oldVal){
@@ -35,9 +36,17 @@ class MainController {
         $scope.teamID = $scope.league[$scope.selectedTeamId].teamId;
         $scope.getRoster($scope.teamID);
         $scope.getTeamStats($scope.teamID);
+        $scope.getTeamDashboard($scope.teamID);
 
       }
     });
+
+    $scope.getTeamDashboard = function(teamID){
+      $http.get('/api/teamSplits/' + teamID).then(response =>{
+        $scope.teamDashboard = response.data;
+        console.log($scope.teamDashboard);
+      });
+    };
 
     $scope.getRoster = function(teamID) {
       $http.get('/api/rosters/' + teamID).then(response =>{
@@ -50,9 +59,6 @@ class MainController {
       $http.get('/api/teamStats/' + teamID).then(response =>{
         $scope.teamStats = response.data.teamSeasonRanks[0];
         $scope.teamInfo = response.data.teamInfoCommon[0];
-        console.log($scope.teamStats);
-        console.log($scope.teamInfo);
-
       });
     };
   }
