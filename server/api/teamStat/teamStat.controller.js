@@ -1,19 +1,17 @@
 /**
  * Using Rails-like standard naming convention for endpoints.
- * GET     /api/teams              ->  index
- * POST    /api/teams              ->  create
- * GET     /api/teams/:id          ->  show
- * PUT     /api/teams/:id          ->  update
- * DELETE  /api/teams/:id          ->  destroy
+ * GET     /api/teamStats              ->  index
+ * POST    /api/teamStats              ->  create
+ * GET     /api/teamStats/:id          ->  show
+ * PUT     /api/teamStats/:id          ->  update
+ * DELETE  /api/teamStats/:id          ->  destroy
  */
 
 'use strict';
 
 import _ from 'lodash';
-import Team from './team.model';
-var nba = require('nba');
-var teams = nba.teams;
-
+import TeamStat from './teamStat.model';
+var nba = require('nba').usePromises();
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -62,43 +60,42 @@ function handleError(res, statusCode) {
   };
 }
 
-// Gets a list of Teams
+// Gets a list of TeamStats
 export function index(req, res) {
-  Team.findAsync()
+  nba.api.teamInfoCommon({teamId: 1610612760})
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Gets a single Team from the DB
+// Gets a single TeamStat from the DB
 export function show(req, res) {
-  Team.findByIdAsync(req.params.id)
-    .then(handleEntityNotFound(res))
+  nba.api.teamInfoCommon({teamId: req.params.id})
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Creates a new Team in the DB
+// Creates a new TeamStat in the DB
 export function create(req, res) {
-  Team.createAsync(req.body)
+  TeamStat.createAsync(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
 }
 
-// Updates an existing Team in the DB
+// Updates an existing TeamStat in the DB
 export function update(req, res) {
   if (req.body._id) {
     delete req.body._id;
   }
-  Team.findByIdAsync(req.params.id)
+  TeamStat.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(saveUpdates(req.body))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Deletes a Team from the DB
+// Deletes a TeamStat from the DB
 export function destroy(req, res) {
-  Team.findByIdAsync(req.params.id)
+  TeamStat.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
     .catch(handleError(res));

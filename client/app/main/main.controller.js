@@ -14,6 +14,11 @@ class MainController {
     $scope.teamImage = 'nbangular.png';
     $scope.primaryColor = '#aeaeae';
     $scope.secondaryColor = '#ffffff';
+    $scope.teamID = 0;
+    $scope.roster = undefined;
+    $scope.coaches = undefined;
+    $scope.teamStats = undefined;
+    $scope.teamInfo = undefined;
 
     //watches select of teams and updates info
     $scope.$watch('selectedTeam', function(newVal, oldVal){
@@ -27,27 +32,31 @@ class MainController {
         $scope.teamImage = $scope.league[$scope.selectedTeamId].img;
         $scope.primaryColor = $scope.league[$scope.selectedTeamId].primaryColor;
         $scope.secondaryColor = $scope.league[$scope.selectedTeamId].secondaryColor;
+        $scope.teamID = $scope.league[$scope.selectedTeamId].teamId;
+        $scope.getRoster($scope.teamID);
+        $scope.getTeamStats($scope.teamID);
 
       }
     });
 
+    $scope.getRoster = function(teamID) {
+      $http.get('/api/rosters/' + teamID).then(response =>{
+        $scope.coaches = response.data.commonTeamRoster;
+        $scope.roster = response.data.commonTeamRoster;
+      });
+    };
 
+    $scope.getTeamStats = function(teamID){
+      $http.get('/api/teamStats/' + teamID).then(response =>{
+        $scope.teamStats = response.data.teamSeasonRanks[0];
+        $scope.teamInfo = response.data.teamInfoCommon[0];
+        console.log($scope.teamStats);
+        console.log($scope.teamInfo);
 
-    $http.get('/api/things').then(response => {
-      this.awesomeThings = response.data;
-    });
+      });
+    };
   }
 
-    addThing() {
-      if (this.newThing) {
-        this.$http.post('/api/things', { name: this.newThing });
-        this.newThing = '';
-      }
-    }
-
-    deleteThing(thing) {
-      this.$http.delete('/api/things/' + thing._id);
-    }
   }
 
 angular.module('nbaPlaygroundApp')
