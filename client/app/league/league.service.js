@@ -161,8 +161,8 @@ angular.module('nbaPlaygroundApp')
     'simpleName': 'Heat',
     'location': 'Miami',
     'img': 'heat.png',
-    'primaryColor': '#960730',
-    'secondaryColor':'#000000'
+    'primaryColor': '#000000',
+    'secondaryColor':'#960730'
   },
   {
     'teamId': 1610612749,
