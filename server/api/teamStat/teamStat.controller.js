@@ -62,14 +62,14 @@ function handleError(res, statusCode) {
 
 // Gets a list of TeamStats
 export function index(req, res) {
-  TeamStat.findAsync()
+  nba.api.teamInfoCommon({teamId: 1610612760})
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
 // Gets a single TeamStat from the DB
 export function show(req, res) {
-  nba.api.teamStats({teamId: req.params.id})
+  nba.api.teamInfoCommon({teamId: req.params.id})
     .then(respondWithResult(res))
     .catch(handleError(res));
 }

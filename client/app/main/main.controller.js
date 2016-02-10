@@ -18,6 +18,7 @@ class MainController {
     $scope.roster = undefined;
     $scope.coaches = undefined;
     $scope.teamStats = undefined;
+    $scope.teamInfo = undefined;
 
     //watches select of teams and updates info
     $scope.$watch('selectedTeam', function(newVal, oldVal){
@@ -47,8 +48,10 @@ class MainController {
 
     $scope.getTeamStats = function(teamID){
       $http.get('/api/teamStats/' + teamID).then(response =>{
-        console.log(response.data);
-        $scope.teamStats = response.data[0];
+        $scope.teamStats = response.data.teamSeasonRanks[0];
+        $scope.teamInfo = response.data.teamInfoCommon[0];
+        console.log($scope.teamStats);
+        console.log($scope.teamInfo);
 
       });
     };

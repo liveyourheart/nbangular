@@ -10,7 +10,7 @@ body{
 <header class="hero-unit" id="banner">
   <div class="container">
     <div class="row">
-      <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 col-xs-offset-4 col-sm-offset-4 col-lg-offset-4 col-md-offset-4">
+      <div class="col-md-4 col-lg-4 col-sm-6 col-xs-6 col-xs-offset-3 col-sm-offset-3 col-lg-offset-4 col-md-offset-4">
         <img class="img-responsive" src="assets/images/logos/{{teamImage}}" alt="{{selectedTeam}}">
       </div>
     </div>
@@ -32,57 +32,77 @@ body{
 
       <div ng-show="selectedTeamId > -1">
 
-        <h2 class="text-center">({{teamStats.w}} - {{teamStats.l}})</h2>
+        <h2 class="text-center">({{teamInfo.w}} - {{teamInfo.l}})</h2>
+        <h4 class="text-center">#{{teamInfo.confRank}} in the {{teamInfo.teamConference}}</h4>
+        <h4 class="text-center">#{{teamInfo.divRank}} in the {{teamInfo.teamDivision}} Division</h4>
+
+        <div class="row">
+          <div class="col-md-3 text-center">
+            <h3>PPG</h3>
+          </div>
+          <div class="col-md-3 text-center">
+            <h3>APG</h3>
+          </div>
+          <div class="col-md-3 text-center">
+            <h3>RPG</h3>
+          </div>
+          <div class="col-md-3 text-center">
+            <h3>DPPG</h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3 text-center">
+            <h3>{{teamStats.ptsPg}}</h3>
+          </div>
+          <div class="col-md-3 text-center">
+            <h3>{{teamStats.astPg}}</h3>
+          </div>
+          <div class="col-md-3 text-center">
+            <h3>{{teamStats.rebPg}}</h3>
+          </div>
+          <div class="col-md-3 text-center">
+            <h3>{{teamStats.oppPtsPg}}</h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3 text-center">
+            <h2>#{{teamStats.ptsRank}}</h2>
+          </div>
+          <div class="col-md-3 text-center">
+            <h2>#{{teamStats.astRank}}</h2>
+          </div>
+          <div class="col-md-3 text-center">
+            <h2>#{{teamStats.rebRank}}</h2>
+          </div>
+          <div class="col-md-3 text-center">
+            <h2>#{{teamStats.oppPtsRank}}</h2>
+          </div>
+        </div>
+
 
         <h4  class="text-center">Roster:</h4>
 
         <div class="table-responsive">
           <table class="table">
             <tr>
-              <th>
-                #
-              </th>
-              <th>
-                POS
-              </th>
-              <th>
-                Player
-              </th>
-              <th>
-              Height
-              </th>
-              <th>
-                Weight
-              </th>
-              <th>
-                School
-              </th>
-              <th>
-                Experience
-              </th>
+              <th>#</th>
+              <th>POS</th>
+              <th>Player</th>
+              <th>Height</th>
+              <th>Weight</th>
+              <th>School</th>
+              <th>Experience</th>
             </tr>
             <tr ng-repeat="player in roster | orderBy: 'player.num'">
-              <td>
-                {{player.num}}
-              </td>
-              <td>
-                {{player.position}}
-              </td>
-              <td>
-                {{player.player}}
-              </td>
-              <td>
-                {{player.height}}
-              </td>
-              <td>
-                {{player.weight}}
-              </td>
-              <td>
-                {{player.school}}
-              </td>
-              <td>
-                {{player.exp}}
-              </td>
+              <td>{{player.num}}</td>
+              <td>{{player.position}}</td>
+              <td>{{player.player}}</td>
+              <td>{{player.height}}</td>
+              <td>{{player.weight}}</td>
+              <td>{{player.school}}</td>
+              <td>{{player.exp}}</td>
             </tr>
           </table>
         </div>
