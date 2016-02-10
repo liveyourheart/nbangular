@@ -1,11 +1,20 @@
 <style type="text/css">
 body{
   background: {{primaryColor}};
-  color: {{secondaryColor}}
+  color: {{secondaryColor}};
 }
 .circle-rank{
   color: {{primaryColor}};
   background: {{secondaryColor}};
+}
+
+.chart{
+  background: {{secondaryColor}};
+}
+
+.chart div{
+  background:{{primaryColor}};
+  color: {{secondaryColor}};
 }
 </style>
 
@@ -34,11 +43,15 @@ body{
 
       <h1 class="text-center">{{selectedTeam}}</h1>
 
+
+
       <div ng-show="selectedTeamId > -1">
 
         <h2 class="text-center">({{teamInfo.w}} - {{teamInfo.l}})</h2>
         <h4 class="text-center">#{{teamInfo.confRank}} in the {{teamInfo.teamConference}}</h4>
         <h4 class="text-center">#{{teamInfo.divRank}} in the {{teamInfo.teamDivision}} Division</h4>
+
+        <bar-chart chart-data="myData"></bar-chart>
 
         <div class="row">
           <div class="col-xs-3 text-center">
@@ -84,6 +97,8 @@ body{
             <h2 class="circle-rank">#{{teamStats.oppPtsRank}}</h2>
           </div>
         </div>
+
+
 
         <h4  class="text-center">Roster:</h4>
 
