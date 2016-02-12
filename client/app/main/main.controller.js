@@ -12,7 +12,7 @@ class MainController {
     $scope.selectedTeamId = -1;
     $scope.league = league;
     $scope.teamImage = 'nbangular.png';
-    $scope.primaryColor = '#aeaeae';
+    $scope.primaryColor = '#797979';
     $scope.secondaryColor = '#ffffff';
     $scope.teamID = 0;
     $scope.roster = undefined;
