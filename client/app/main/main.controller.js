@@ -20,7 +20,6 @@ class MainController {
     $scope.teamStats = undefined;
     $scope.teamInfo = undefined;
     $scope.teamDashboard = undefined;
-    $scope.myData = [310,320,330,340,360, 380, 320, 350];
 
     //watches select of teams and updates info
     $scope.$watch('selectedTeam', function(newVal, oldVal){
@@ -38,8 +37,6 @@ class MainController {
         $scope.getRoster($scope.teamID);
         $scope.getTeamStats($scope.teamID);
         $scope.getTeamDashboard($scope.teamID);
-        $scope.myData = [];
-        $scope.myData = [200, 300, 440];
 
       }
     });
@@ -47,7 +44,6 @@ class MainController {
     $scope.getTeamDashboard = function(teamID){
       $http.get('/api/teamSplits/' + teamID).then(response =>{
         $scope.teamDashboard = response.data;
-        console.log($scope.teamDashboard);
       });
     };
 
