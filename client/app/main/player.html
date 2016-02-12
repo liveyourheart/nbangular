@@ -1,0 +1,141 @@
+<style type="text/css">
+body{
+  background: {{primaryColor}};
+  color: {{secondaryColor}};
+}
+label{
+  color: {{primaryColor}};
+}
+.circle-rank{
+  color: {{primaryColor}};
+  background: {{secondaryColor}};
+}
+.circle-rank-separator{
+  background: {{primaryColor}};
+}
+
+.chart{
+  background: {{secondaryColor}};
+}
+
+.chart div{
+  background:{{primaryColor}};
+  color: {{secondaryColor}};
+}
+
+.player-main-display-header{
+  background: {{secondaryColor}};
+  color: {{primaryColor}};
+}
+</style>
+
+<div class="color-break" ng-style="{background: primaryColor}"></div>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-xs-6 col-xs-offset-3 col-sm-offset-3 col-lg-offset-4 col-md-offset-4">
+        <img class="img-responsive" src="assets/images/logos/{{teamImage}}" alt="{{selectedTeam}}">
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+<div class="container">
+
+  <div class="player-main-display">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="player-main-display-header text-center">
+          <h1>#{{cpi.jersey}} {{cpi.displayFirstLast | uppercase}}</h1>
+          <h4>{{cpi.position}} / {{cpi.teamCity | uppercase}} {{cpi.teamCode | uppercase}}</h4>
+          <h4>Height: {{cpi.height}} Weight: {{cpi.weight}}</h4>
+          <h4>Born: {{cpi.birthdate | date: shortDate}} Country: {{cpi.country}}</h4>
+          <h4>Rookie Year: {{cpi.fromYear}}  School: {{cpi.school}}</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="row text-center">
+
+      <div class="col-md-3 col-xs-6">
+        <h2>PPG</h2>
+        <div class="circle-rank">
+          <h2 tooltip="Season Average" class="circle-rank-half">{{seasonAvg.pts}}</h2>
+          <div class="circle-rank-separator"></div>
+          <h2 tooltip="Career Average" class="circle-rank-half">{{careerAvg.pts}}</h2>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-xs-6">
+        <h2>APG</h2>
+        <div class="circle-rank">
+          <h2 tooltip="Season Average" class="circle-rank-half">{{seasonAvg.ast}}</h2>
+          <div class="circle-rank-separator"></div>
+          <h2 tooltip="Career Average" class="circle-rank-half">{{careerAvg.ast}}</h2>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-xs-6">
+        <h2>RPG</h2>
+        <div class="circle-rank">
+          <h2 tooltip="Season Average" class="circle-rank-half">{{seasonAvg.reb}}</h2>
+          <div class="circle-rank-separator"></div>
+          <h2 tooltip="Career Average" class="circle-rank-half">{{careerAvg.reb}}</h2>
+        </div>
+      </div>
+
+
+
+      <div class="col-md-3 col-xs-6">
+        <h2>SPG</h2>
+        <div class="circle-rank">
+          <h2 tooltip="Season Average" class="circle-rank-half">{{seasonAvg.stl}}</h2>
+          <div class="circle-rank-separator"></div>
+          <h2 tooltip="Career Average" class="circle-rank-half">{{careerAvg.stl}}</h2>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-xs-6">
+        <h2>BPG</h2>
+        <div class="circle-rank">
+          <h2 tooltip="Season Average" class="circle-rank-half">{{seasonAvg.blk}}</h2>
+          <div class="circle-rank-separator"></div>
+          <h2 tooltip="Career Average" class="circle-rank-half">{{careerAvg.blk}}</h2>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-xs-6">
+        <h2>FG%</h2>
+        <div class="circle-rank">
+          <h2 tooltip="Season Average" class="circle-rank-half">{{seasonAvg.fgPct}}%</h2>
+          <div class="circle-rank-separator"></div>
+          <h2 tooltip="Career Average" class="circle-rank-half">{{careerAvg.fgPct}}%</h2>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-xs-6">
+        <h2>FG3%</h2>
+        <div class="circle-rank">
+          <h2 tooltip="Season Average" class="circle-rank-half">{{seasonAvg.fg3Pct}}%</h2>
+          <div class="circle-rank-separator"></div>
+          <h2 tooltip="Career Average" class="circle-rank-half">{{careerAvg.fg3Pct}}%</h2>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-xs-6">
+        <h2>FT%</h2>
+        <div class="circle-rank">
+          <h2 tooltip="Season Average" class="circle-rank-half">{{seasonAvg.ftPct}}%</h2>
+          <div class="circle-rank-separator"></div>
+          <h2 tooltip="Career Average" class="circle-rank-half">{{careerAvg.ftPct}}%</h2>
+        </div>
+      </div>
+
+  </div>
+
+
+  </div>
+</div>

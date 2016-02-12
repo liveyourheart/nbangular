@@ -9,6 +9,8 @@ import path from 'path';
 
 export default function(app) {
   // Insert routes below
+  app.use('/api/playerStats', require('./api/playerStat'));
+  app.use('/api/players', require('./api/player'));
   app.use('/api/teamSplits', require('./api/teamSplit'));
   app.use('/api/teamStats', require('./api/teamStat'));
   app.use('/api/rosters', require('./api/roster'));

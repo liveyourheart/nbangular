@@ -62,7 +62,7 @@ function handleError(res, statusCode) {
 
 // Gets a list of TeamStats
 export function index(req, res) {
-  nba.api.teamSplits({teamId: 1610612760})
+  nba.api.teamPlayerDashboard([])
     .then(respondWithResult(res))
     .catch(handleError(res));
 }

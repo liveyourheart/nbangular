@@ -26,6 +26,7 @@ label{
 .player:hover {
   background: {{secondaryColor}};
   color: {{primaryColor}};
+  cursor: pointer;
 }
 
 .team-main-display-header{
@@ -45,8 +46,8 @@ label{
     </div>
   </div>
     <p ng-show="selectedTeamId < 0">Welcome to NBAngular, choose a team to get started</p>
-    <label class="text-center" for="team-select">Select A Team:</label>
-    <select ng-model="selectedTeam" ng-click="logit()" name="teams" id="team-select" class="form-control">
+    <label ng-show="selectedTeamId > -1" class="text-center" for="team-select">Select A Team:</label>
+    <select ng-model="selectedTeam" name="teams" id="team-select" class="form-control">
       <option ng-repeat="team in main.league" value="{{team.teamName}}">{{team.teamName}}</option>
     </select>
 </header>
@@ -59,14 +60,16 @@ label{
     <div class="row">
       <div class="col-lg-12">
         <div class="team-main-display-header">
-          <h1 class="text-center">{{selectedTeam}}</h1>
+          <h1 class="text-center">{{selectedTeam | uppercase}}</h1>
           <h2 class="text-center">({{teamInfo.w}} - {{teamInfo.l}})</h2>
           <div class="row">
-            <div class="col-xs-6">
-              <h4 class="text-center">#{{teamInfo.confRank}} in the {{teamInfo.teamConference}}</h4>
+            <div class="col-xs-6 text-center">
+              <h1>#{{teamInfo.confRank}}</h1>
+              <h3>in the {{teamInfo.teamConference}}</h4>
             </div>
-            <div class="col-xs-6">
-              <h4 class="text-center">#{{teamInfo.divRank}} in the {{teamInfo.teamDivision}} Division</h4>
+            <div class="col-xs-6 text-center">
+              <h1>#{{teamInfo.divRank}}</h1>
+              <h3 class="text-center">in the {{teamInfo.teamDivision}} Division</h4>
             </div>
           </div>
         </div>
@@ -76,41 +79,40 @@ label{
     <div class="row text-center">
 
       <div class="col-md-3 col-xs-6">
+        <h2>PPG</h2>
         <div class="circle-rank">
           <h2 class="circle-rank-half">{{teamStats.ptsPg}}</h2>
           <div class="circle-rank-separator"></div>
-          <h2 class="circle-rank-half">#{{teamStats.ptsRank}}</h2>
+          <h2 tooltip="League Rank" class="circle-rank-half">#{{teamStats.ptsRank}}</h2>
         </div>
-        <h2>PPG</h2>
       </div>
 
       <div class="col-md-3 col-xs-6">
+        <h2>APG</h2>
         <div class="circle-rank">
           <h2 class="circle-rank-half">{{teamStats.astPg}}</h2>
           <div class="circle-rank-separator"></div>
-          <h2 class="circle-rank-half">#{{teamStats.astRank}}</h2>
+          <h2 tooltip="League Rank" class="circle-rank-half">#{{teamStats.astRank}}</h2>
         </div>
-        <h2>APG</h2>
       </div>
 
       <div class="col-md-3 col-xs-6">
+        <h2>RPG</h2>
         <div class="circle-rank">
           <h2 class="circle-rank-half">{{teamStats.rebPg}}</h2>
           <div class="circle-rank-separator"></div>
-          <h2 class="circle-rank-half">#{{teamStats.rebRank}}</h2>
+          <h2 tooltip="League Rank" class="circle-rank-half">#{{teamStats.rebRank}}</h2>
         </div>
-        <h2>RPG</h2>
       </div>
 
 
-
       <div class="col-md-3 col-xs-6">
+        <h2>DPPG</h2>
         <div class="circle-rank">
           <h2 class="circle-rank-half">{{teamStats.oppPtsPg}}</h2>
           <div class="circle-rank-separator"></div>
-          <h2 class="circle-rank-half">#{{teamStats.oppPtsRank}}</h2>
+          <h2 tooltip="League Rank" class="circle-rank-half">#{{teamStats.oppPtsRank}}</h2>
         </div>
-        <h2>DPPG</h2>
       </div>
 
   </div>
@@ -130,7 +132,7 @@ label{
             <th>SCHOOL</th>
             <th>EXPERIENCE</th>
           </tr>
-            <tr class="player" ng-repeat="player in roster | orderBy: 'player.num'">
+            <tr class="player" ng-repeat="player in roster | orderBy: 'player.num'" ng-click="goToPlayer(player.playerId)">
               <td>{{player.num}}</td>
               <td>{{player.position}}</td>
               <td>{{player.player}}</td>
