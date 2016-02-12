@@ -12,7 +12,7 @@ class MainController {
     $scope.selectedTeamId = -1;
     $scope.league = league;
     $scope.teamImage = 'nbangular.png';
-    $scope.primaryColor = '#aeaeae';
+    $scope.primaryColor = '#797979';
     $scope.secondaryColor = '#ffffff';
     $scope.teamID = 0;
     $scope.roster = undefined;
@@ -20,6 +20,7 @@ class MainController {
     $scope.teamStats = undefined;
     $scope.teamInfo = undefined;
     $scope.teamDashboard = undefined;
+    $scope.myData = [310,320,330,340,360, 380, 320, 350];
 
     //watches select of teams and updates info
     $scope.$watch('selectedTeam', function(newVal, oldVal){
@@ -37,6 +38,8 @@ class MainController {
         $scope.getRoster($scope.teamID);
         $scope.getTeamStats($scope.teamID);
         $scope.getTeamDashboard($scope.teamID);
+        $scope.myData = [];
+        $scope.myData = [200, 300, 440];
 
       }
     });

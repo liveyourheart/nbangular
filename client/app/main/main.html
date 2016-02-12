@@ -1,11 +1,36 @@
 <style type="text/css">
 body{
   background: {{primaryColor}};
-  color: {{secondaryColor}}
+  color: {{secondaryColor}};
+}
+label{
+  color: {{primaryColor}};
 }
 .circle-rank{
   color: {{primaryColor}};
   background: {{secondaryColor}};
+}
+.circle-rank-separator{
+  background: {{primaryColor}};
+}
+
+.chart{
+  background: {{secondaryColor}};
+}
+
+.chart div{
+  background:{{primaryColor}};
+  color: {{secondaryColor}};
+}
+
+.player:hover {
+  background: {{secondaryColor}};
+  color: {{primaryColor}};
+}
+
+.team-main-display-header{
+  background: {{secondaryColor}};
+  color: {{primaryColor}};
 }
 </style>
 
@@ -20,86 +45,92 @@ body{
     </div>
   </div>
     <p ng-show="selectedTeamId < 0">Welcome to NBAngular, choose a team to get started</p>
+    <label class="text-center" for="team-select">Select A Team:</label>
+    <select ng-model="selectedTeam" ng-click="logit()" name="teams" id="team-select" class="form-control">
+      <option ng-repeat="team in main.league" value="{{team.teamName}}">{{team.teamName}}</option>
+    </select>
 </header>
 
 
 
 <div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <label class="text-center" for="team-select">Select A Team:</label>
-      <select ng-model="selectedTeam" ng-click="logit()" name="teams" id="team-select" class="form-control">
-        <option ng-repeat="team in main.league" value="{{team.teamName}}">{{team.teamName}}</option>
-      </select>
 
-      <h1 class="text-center">{{selectedTeam}}</h1>
-
-      <div ng-show="selectedTeamId > -1">
-
-        <h2 class="text-center">({{teamInfo.w}} - {{teamInfo.l}})</h2>
-        <h4 class="text-center">#{{teamInfo.confRank}} in the {{teamInfo.teamConference}}</h4>
-        <h4 class="text-center">#{{teamInfo.divRank}} in the {{teamInfo.teamDivision}} Division</h4>
-
-        <div class="row">
-          <div class="col-xs-3 text-center">
-            <h3>PPG</h3>
-          </div>
-          <div class="col-xs-3 text-center">
-            <h3>APG</h3>
-          </div>
-          <div class="col-xs-3 text-center">
-            <h3>RPG</h3>
-          </div>
-          <div class="col-xs-3 text-center">
-            <h3>DPPG</h3>
+  <div class="team-main-display" ng-show="selectedTeamId > -1">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="team-main-display-header">
+          <h1 class="text-center">{{selectedTeam}}</h1>
+          <h2 class="text-center">({{teamInfo.w}} - {{teamInfo.l}})</h2>
+          <div class="row">
+            <div class="col-xs-6">
+              <h4 class="text-center">#{{teamInfo.confRank}} in the {{teamInfo.teamConference}}</h4>
+            </div>
+            <div class="col-xs-6">
+              <h4 class="text-center">#{{teamInfo.divRank}} in the {{teamInfo.teamDivision}} Division</h4>
+            </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <div class="row">
-          <div class="col-xs-3 text-center">
-            <h3>{{teamStats.ptsPg}}</h3>
-          </div>
-          <div class="col-xs-3 text-center">
-            <h3>{{teamStats.astPg}}</h3>
-          </div>
-          <div class="col-xs-3 text-center">
-            <h3>{{teamStats.rebPg}}</h3>
-          </div>
-          <div class="col-xs-3 text-center">
-            <h3>{{teamStats.oppPtsPg}}</h3>
-          </div>
+    <div class="row text-center">
+
+      <div class="col-md-3 col-xs-6">
+        <div class="circle-rank">
+          <h2 class="circle-rank-half">{{teamStats.ptsPg}}</h2>
+          <div class="circle-rank-separator"></div>
+          <h2 class="circle-rank-half">#{{teamStats.ptsRank}}</h2>
         </div>
+        <h2>PPG</h2>
+      </div>
 
-        <div class="row">
-          <div class="col-xs-3 text-center">
-            <h2 class="circle-rank">#{{teamStats.ptsRank}}</h2>
-          </div>
-          <div class="col-xs-3 text-center">
-            <h2 class="circle-rank">#{{teamStats.astRank}}</h2>
-          </div>
-          <div class="col-xs-3 text-center">
-            <h2 class="circle-rank">#{{teamStats.rebRank}}</h2>
-          </div>
-          <div class="col-xs-3 text-center">
-            <h2 class="circle-rank">#{{teamStats.oppPtsRank}}</h2>
-          </div>
+      <div class="col-md-3 col-xs-6">
+        <div class="circle-rank">
+          <h2 class="circle-rank-half">{{teamStats.astPg}}</h2>
+          <div class="circle-rank-separator"></div>
+          <h2 class="circle-rank-half">#{{teamStats.astRank}}</h2>
         </div>
+        <h2>APG</h2>
+      </div>
 
-        <h4  class="text-center">Roster:</h4>
+      <div class="col-md-3 col-xs-6">
+        <div class="circle-rank">
+          <h2 class="circle-rank-half">{{teamStats.rebPg}}</h2>
+          <div class="circle-rank-separator"></div>
+          <h2 class="circle-rank-half">#{{teamStats.rebRank}}</h2>
+        </div>
+        <h2>RPG</h2>
+      </div>
 
-        <div class="table-responsive">
-          <table class="table">
-            <tr>
-              <th>#</th>
-              <th>POS</th>
-              <th>Player</th>
-              <th>Height</th>
-              <th>Weight</th>
-              <th>Age</th>
-              <th>School</th>
-              <th>Experience</th>
-            </tr>
-            <tr ng-repeat="player in roster | orderBy: 'player.num'">
+
+
+      <div class="col-md-3 col-xs-6">
+        <div class="circle-rank">
+          <h2 class="circle-rank-half">{{teamStats.oppPtsPg}}</h2>
+          <div class="circle-rank-separator"></div>
+          <h2 class="circle-rank-half">#{{teamStats.oppPtsRank}}</h2>
+        </div>
+        <h2>DPPG</h2>
+      </div>
+
+  </div>
+
+  <div class="team-roster-display" ng-show="selectedTeamId > -1">
+      <h1 class="text-center">Roster:</h1>
+      <p class="text-center">Choose a player to for individual stats</p>
+      <div class="table-responsive">
+        <table class="table">
+          <tr>
+            <th>#</th>
+            <th>POS</th>
+            <th>PLAYER</th>
+            <th>HEIGHT</th>
+            <th>WEIGHT</th>
+            <th>AGE</th>
+            <th>SCHOOL</th>
+            <th>EXPERIENCE</th>
+          </tr>
+            <tr class="player" ng-repeat="player in roster | orderBy: 'player.num'">
               <td>{{player.num}}</td>
               <td>{{player.position}}</td>
               <td>{{player.player}}</td>
@@ -109,13 +140,12 @@ body{
               <td>{{player.school}}</td>
               <td>{{player.exp}}</td>
             </tr>
-          </table>
-        </div>
-
+        </table>
       </div>
-
-
-
-    </div>
   </div>
+
+
+
+        <!-- <bar-chart chart-data="myData"></bar-chart> -->
+
 </div>
