@@ -47,8 +47,8 @@ class PlayerController {
       }
     ];
 
-    $scope.getPlayerInfo = function(playerID) {
-      $http.get('/api/players/' + playerID).then(response =>{
+    $scope.getPlayerStats = function(playerID) {
+      $http.get('/api/playerStats/' + playerID).then(response =>{
         $scope.gameLogs = response.data.gameLogs;
         $scope.leagueAvg = response.data.graphLeagueAvg[0];
         $scope.playerAvg = response.data.graphPlayerAvg[0];
@@ -65,8 +65,8 @@ class PlayerController {
       });
     };
 
-    $scope.getPlayerProfile = function(playerID){
-      $http.get('/api/playerStats/' + playerID).then(response =>{
+    $scope.getPlayerInfo = function(playerID){
+      $http.get('/api/players/' + playerID).then(response =>{
         $scope.hs = response.data.playerHeadlineStats[0];
         $scope.cpi = response.data.commonPlayerInfo[0];
         $scope.teamId = $scope.cpi.teamId;
@@ -105,8 +105,8 @@ class PlayerController {
       $location.path('/');
     };
 
+    $scope.getPlayerStats($scope.playerId);
     $scope.getPlayerInfo($scope.playerId);
-    $scope.getPlayerProfile($scope.playerId);
 
   }
 
