@@ -13,25 +13,46 @@ label{
 .circle-rank-separator{
   background: {{primaryColor}};
 }
-
 .chart{
   background: {{secondaryColor}};
 }
-
 .chart div{
   background:{{primaryColor}};
   color: {{secondaryColor}};
 }
-
 .player:hover {
   background: {{secondaryColor}};
   color: {{primaryColor}};
   cursor: pointer;
 }
-
 .team-main-display-header{
   background: {{secondaryColor}};
   color: {{primaryColor}};
+}
+.tab-menu-option-middle{
+  border-right: 3px solid {{secondaryColor}};
+  border-left: 3px solid {{secondaryColor}};
+  border: 3px solid {{secondaryColor}};
+}
+.tab-menu-option-left{
+  border: 3px solid {{secondaryColor}};
+}
+.tab-menu-option-right{
+  border: 3px solid {{secondaryColor}};
+}
+.tab-menu-option-selected{
+  background: {{secondaryColor}};
+  color: {{primaryColor}};
+}
+.pick-a-team{
+  border: 3px solid {{secondaryColor}};
+  color: {{secondaryColor}};
+  background: {{primaryColor}};
+}
+#team-select{
+  background-color: {{secondaryColor}} !important;
+  color: {{primaryColor}} !important;
+  font-weight: bold;
 }
 </style>
 
@@ -44,42 +65,65 @@ label{
         <img class="img-responsive" src="assets/images/logos/{{teamImage}}" alt="{{selectedTeam}}">
       </div>
     </div>
-  </div>
+
     <p ng-show="selectedTeamId < 0">Welcome to NBAngular, choose a team to get started</p>
-    <label ng-show="selectedTeamId > -1" class="text-center" for="team-select">Select A Team:</label>
+    <div class="row" ng-show="selectedTeamId > -1">
+      <div class="col-xs-2 col-xs-offset-5">
+        <div class="pick-a-team text-center" ng-click="goHome()">
+          SELECT TEAM:
+        </div>
+      </div>
+    </div>
     <select ng-model="selectedTeam" name="teams" id="team-select" class="form-control">
       <option ng-repeat="team in main.league" value="{{team.teamName}}">{{team.teamName}}</option>
     </select>
+  </div>
 </header>
 
 
 
-<div class="container">
+<div class="container" ng-show="selectedTeamId > -1">
 
-  <div class="team-main-display" ng-show="selectedTeamId > -1">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="team-main-display-header">
-          <h1 class="text-center">{{selectedTeam | uppercase}}</h1>
-          <h2 class="text-center">({{teamInfo.w}} - {{teamInfo.l}})</h2>
-          <div class="row">
-            <div class="col-xs-6 text-center">
-              <h1>#{{teamInfo.confRank}}</h1>
-              <h3>in the {{teamInfo.teamConference}}</h4>
-            </div>
-            <div class="col-xs-6 text-center">
-              <h1>#{{teamInfo.divRank}}</h1>
-              <h3 class="text-center">in the {{teamInfo.teamDivision}} Division</h4>
+  <div class="tab-menu">
+    <div class="row text-center">
+      <div class="col-xs-4 col-md-2 col-md-offset-3 tab-menu-option-left" ng-click="tabIt(tabs[0].id)">
+        <h3>ROSTER</h3>
+      </div>
+      <div class="col-xs-4 col-md-2 tab-menu-option-middle tab-menu-option-selected" ng-click="tabIt(tabs[1].id)">
+        <h3>MAIN</h3>
+      </div>
+      <div class="col-xs-4 col-md-2 tab-menu-option-right" ng-click="tabIt(tabs[2].id)">
+        <h3>CHARTS</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="team-main-display" ng-show="tabs[1].active === true">
+    <div class="team-main-info-display">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="team-main-display-header">
+            <h1 class="text-center">{{selectedTeam | uppercase}}</h1>
+            <h2 class="text-center">({{teamInfo.w}} - {{teamInfo.l}})</h2>
+            <div class="row">
+              <div class="col-xs-6 text-center">
+                <h1>#{{teamInfo.confRank}}</h1>
+                <h3>in the {{teamInfo.teamConference}}</h4>
+              </div>
+              <div class="col-xs-6 text-center">
+                <h1>#{{teamInfo.divRank}}</h1>
+                <h3 class="text-center">in the {{teamInfo.teamDivision}} Division</h4>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="row text-center">
+    <div class="team-main-stats-display row text-center">
 
       <div class="col-md-3 col-xs-6">
-        <h2>PPG</h2>
+        <h2 class="circle-rank-label">PPG</h2>
         <div class="circle-rank">
           <h2 class="circle-rank-half">{{teamStats.ptsPg}}</h2>
           <div class="circle-rank-separator"></div>
@@ -88,7 +132,7 @@ label{
       </div>
 
       <div class="col-md-3 col-xs-6">
-        <h2>APG</h2>
+        <h2 class="circle-rank-label">APG</h2>
         <div class="circle-rank">
           <h2 class="circle-rank-half">{{teamStats.astPg}}</h2>
           <div class="circle-rank-separator"></div>
@@ -97,7 +141,7 @@ label{
       </div>
 
       <div class="col-md-3 col-xs-6">
-        <h2>RPG</h2>
+        <h2 class="circle-rank-label">RPG</h2>
         <div class="circle-rank">
           <h2 class="circle-rank-half">{{teamStats.rebPg}}</h2>
           <div class="circle-rank-separator"></div>
@@ -107,17 +151,20 @@ label{
 
 
       <div class="col-md-3 col-xs-6">
-        <h2>DPPG</h2>
+        <h2 class="circle-rank-label">DPPG</h2>
         <div class="circle-rank">
           <h2 class="circle-rank-half">{{teamStats.oppPtsPg}}</h2>
           <div class="circle-rank-separator"></div>
           <h2 tooltip="League Rank" class="circle-rank-half">#{{teamStats.oppPtsRank}}</h2>
         </div>
       </div>
-
+    </div>
   </div>
 
-  <div class="team-roster-display" ng-show="selectedTeamId > -1">
+
+
+
+  <div class="team-roster-display" ng-show="tabs[0].active == true">
       <h1 class="text-center">Roster:</h1>
       <p class="text-center">Choose a player to for individual stats</p>
       <div class="table-responsive">
@@ -144,6 +191,10 @@ label{
             </tr>
         </table>
       </div>
+  </div>
+
+  <div class="team-charts-display" ng-show="tabs[2].active == true">
+    <h1 class="text-center">CHARTS COMING SOON</h1>
   </div>
 
 

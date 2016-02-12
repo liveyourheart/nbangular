@@ -28,6 +28,25 @@ class PlayerController {
     $scope.seasonAvg = undefined;
     $scope.seasonHigh = undefined;
 
+
+    $scope.tabs = [
+      {
+        id: 'stats',
+        active: false,
+        link: 'tab-menu-option-left'
+      },
+      {
+        id: 'info',
+        active: true,
+        link: 'tab-menu-option-middle'
+      },
+      {
+        id: 'charts',
+        active: false,
+        link: 'tab-menu-option-right'
+      }
+    ];
+
     $scope.getPlayerInfo = function(playerID) {
       $http.get('/api/players/' + playerID).then(response =>{
         $scope.gameLogs = response.data.gameLogs;
@@ -65,6 +84,21 @@ class PlayerController {
       $scope.teamImage = $scope.league[$scope.selectedTeamId].img;
       $scope.primaryColor = $scope.league[$scope.selectedTeamId].primaryColor;
       $scope.secondaryColor = $scope.league[$scope.selectedTeamId].secondaryColor;
+    };
+
+    $scope.tabIt = function(that){
+      var notEl;
+      for(var i = 0; i < $scope.tabs.length; i++){
+        if($scope.tabs[i].id === that){
+          $scope.tabs[i].active = true;
+          var el = angular.element(document.querySelector('.' + $scope.tabs[i].link));
+          el.addClass('tab-menu-option-selected');
+        } else{
+          $scope.tabs[i].active = false;
+          notEl = angular.element(document.querySelector('.' + $scope.tabs[i].link));
+          notEl.removeClass('tab-menu-option-selected');
+        }
+      }
     };
 
     $scope.goHome = function(){
