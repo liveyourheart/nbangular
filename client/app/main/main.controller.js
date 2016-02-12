@@ -85,14 +85,10 @@ class MainController {
           $scope.tabs[i].active = true;
           var el = angular.element(document.querySelector('.' + $scope.tabs[i].link));
           el.addClass('tab-menu-option-selected');
-          console.log($scope.tabs[i].id);
-          console.log($scope.tabs[i].active);
         } else{
           $scope.tabs[i].active = false;
           notEl = angular.element(document.querySelector('.' + $scope.tabs[i].link));
           notEl.removeClass('tab-menu-option-selected');
-          console.log($scope.tabs[i].id);
-          console.log($scope.tabs[i].active);
         }
       }
     };

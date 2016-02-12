@@ -31,6 +31,7 @@ body
   transition: all .5s ease-out;
   -moz-transition: all .5s ease-out;
   -webkit-transition: all .5s ease-out;
+  font-family Helvetica
 
 td
   font-weight: bold
@@ -42,13 +43,33 @@ td
 .team-main-display
   padding: 30px
 
+.team-main-info-display
+  margin-top 20px
+
+
 .team-main-display-header
+  padding-top 20px
+  padding-bottom 20px
   margin-bottom 50px
   border-radius $display-border-radius
 
+  h1
+    font-size 400%
+    font-weight bold
+  h4
+    font-size 200%
+
 .player-main-display-header
   border-radius $display-border-radius
+  margin-top 20px
+  padding-top 20px
+  padding-bottom 20px
 
+  h1
+    font-size 400%
+    font-weight bold
+  h4
+    font-size 200%
 
 /************************
         CIRCLE RANK
@@ -62,11 +83,18 @@ td
   margin-left: auto;
   vertical-align: text-top;
 
+
 .circle-rank-half
   height: 125px;
   line-height: 125px;
   padding: 0;
   margin: 0;
+  font-weight bold
+  font-size 500%
+
+.circle-rank-label
+  font-size 400%
+  font-weight bold
 
 .circle-rank-separator
   height 2px
@@ -101,3 +129,11 @@ td
 .tab-menu-option-right
   border-top-right-radius $display-border-radius
   border-bottom-right-radius $display-border-radius
+
+/************************
+PLAYER PAGE BACK BUTTON
+************************/
+.home-button
+  margin-top 15px
+  border-radius $display-border-radius
+  cursor pointer
