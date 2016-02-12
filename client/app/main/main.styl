@@ -32,14 +32,15 @@ body
   -moz-transition: all .5s ease-out;
   -webkit-transition: all .5s ease-out;
 
-.color-break
-  height 80px
-  transition: all .5s ease-out;
-  -moz-transition: all .5s ease-out;
-  -webkit-transition: all .5s ease-out;
-
 td
   font-weight: bold
+
+/************************
+        DISPLAYS
+************************/
+
+.team-main-display
+  padding: 30px
 
 .team-main-display-header
   margin-bottom 50px
@@ -47,6 +48,11 @@ td
 
 .player-main-display-header
   border-radius $display-border-radius
+
+
+/************************
+        CIRCLE RANK
+************************/
 
 .circle-rank
   height: 250px;
@@ -68,5 +74,30 @@ td
   margin-left auto
   margin-right auto
 
-.team-main-display
-  padding: 30px
+/************************
+        COLOR BREAK
+************************/
+
+.color-break
+  height 80px
+  transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -webkit-transition: all .5s ease-out;
+
+/************************
+        TAB MENU
+************************/
+
+.tab-menu
+  margin-top 30px
+
+.tab-menu-option
+  padding 0
+
+.tab-menu-option-left
+  border-top-left-radius $display-border-radius
+  border-bottom-left-radius $display-border-radius
+
+.tab-menu-option-right
+  border-top-right-radius $display-border-radius
+  border-bottom-right-radius $display-border-radius

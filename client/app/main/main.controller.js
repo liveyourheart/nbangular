@@ -20,6 +20,23 @@ class MainController {
     $scope.teamStats = undefined;
     $scope.teamInfo = undefined;
     $scope.teamDashboard = undefined;
+    $scope.tabs = [
+      {
+        id: 'roster',
+        active: false,
+        link: 'tab-menu-option-left'
+      },
+      {
+        id: 'main',
+        active: true,
+        link: 'tab-menu-option-middle'
+      },
+      {
+        id: 'charts',
+        active: false,
+        link: 'tab-menu-option-right'
+      }
+    ];
 
     //watches select of teams and updates info
     $scope.$watch('selectedTeam', function(newVal, oldVal){
@@ -59,6 +76,25 @@ class MainController {
         $scope.teamStats = response.data.teamSeasonRanks[0];
         $scope.teamInfo = response.data.teamInfoCommon[0];
       });
+    };
+
+    $scope.tabIt = function(that){
+      var notEl;
+      for(var i = 0; i < $scope.tabs.length; i++){
+        if($scope.tabs[i].id === that){
+          $scope.tabs[i].active = true;
+          var el = angular.element(document.querySelector('.' + $scope.tabs[i].link));
+          el.addClass('tab-menu-option-selected');
+          console.log($scope.tabs[i].id);
+          console.log($scope.tabs[i].active);
+        } else{
+          $scope.tabs[i].active = false;
+          notEl = angular.element(document.querySelector('.' + $scope.tabs[i].link));
+          notEl.removeClass('tab-menu-option-selected');
+          console.log($scope.tabs[i].id);
+          console.log($scope.tabs[i].active);
+        }
+      }
     };
 
     $scope.goToPlayer = function(playerID){
