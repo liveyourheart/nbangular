@@ -4,7 +4,7 @@
 
 class MainController {
 
-  constructor($http, league, $scope) {
+  constructor($http, league, $scope, $location) {
     this.$http = $http;
     this.awesomeThings = [];
     this.league = league;
@@ -59,6 +59,10 @@ class MainController {
         $scope.teamStats = response.data.teamSeasonRanks[0];
         $scope.teamInfo = response.data.teamInfoCommon[0];
       });
+    };
+
+    $scope.goToPlayer = function(playerID){
+      $location.path('/' + playerID);
     };
   }
 

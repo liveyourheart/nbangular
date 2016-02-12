@@ -47,7 +47,7 @@ label{
   </div>
     <p ng-show="selectedTeamId < 0">Welcome to NBAngular, choose a team to get started</p>
     <label ng-show="selectedTeamId > -1" class="text-center" for="team-select">Select A Team:</label>
-    <select ng-model="selectedTeam" ng-click="logit()" name="teams" id="team-select" class="form-control">
+    <select ng-model="selectedTeam" name="teams" id="team-select" class="form-control">
       <option ng-repeat="team in main.league" value="{{team.teamName}}">{{team.teamName}}</option>
     </select>
 </header>
@@ -83,7 +83,7 @@ label{
         <div class="circle-rank">
           <h2 class="circle-rank-half">{{teamStats.ptsPg}}</h2>
           <div class="circle-rank-separator"></div>
-          <h2 class="circle-rank-half">#{{teamStats.ptsRank}}</h2>
+          <h2 tooltip="League Rank" class="circle-rank-half">#{{teamStats.ptsRank}}</h2>
         </div>
       </div>
 
@@ -92,7 +92,7 @@ label{
         <div class="circle-rank">
           <h2 class="circle-rank-half">{{teamStats.astPg}}</h2>
           <div class="circle-rank-separator"></div>
-          <h2 class="circle-rank-half">#{{teamStats.astRank}}</h2>
+          <h2 tooltip="League Rank" class="circle-rank-half">#{{teamStats.astRank}}</h2>
         </div>
       </div>
 
@@ -101,10 +101,9 @@ label{
         <div class="circle-rank">
           <h2 class="circle-rank-half">{{teamStats.rebPg}}</h2>
           <div class="circle-rank-separator"></div>
-          <h2 class="circle-rank-half">#{{teamStats.rebRank}}</h2>
+          <h2 tooltip="League Rank" class="circle-rank-half">#{{teamStats.rebRank}}</h2>
         </div>
       </div>
-
 
 
       <div class="col-md-3 col-xs-6">
@@ -112,7 +111,7 @@ label{
         <div class="circle-rank">
           <h2 class="circle-rank-half">{{teamStats.oppPtsPg}}</h2>
           <div class="circle-rank-separator"></div>
-          <h2 class="circle-rank-half">#{{teamStats.oppPtsRank}}</h2>
+          <h2 tooltip="League Rank" class="circle-rank-half">#{{teamStats.oppPtsRank}}</h2>
         </div>
       </div>
 
@@ -133,7 +132,7 @@ label{
             <th>SCHOOL</th>
             <th>EXPERIENCE</th>
           </tr>
-            <tr class="player" ng-repeat="player in roster | orderBy: 'player.num'">
+            <tr class="player" ng-repeat="player in roster | orderBy: 'player.num'" ng-click="goToPlayer(player.playerId)">
               <td>{{player.num}}</td>
               <td>{{player.position}}</td>
               <td>{{player.player}}</td>
