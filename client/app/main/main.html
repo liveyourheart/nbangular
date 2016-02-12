@@ -44,7 +44,16 @@ label{
   background: {{secondaryColor}};
   color: {{primaryColor}};
 }
-
+.pick-a-team{
+  border: 3px solid {{secondaryColor}};
+  color: {{secondaryColor}};
+  background: {{primaryColor}};
+}
+#team-select{
+  background-color: {{secondaryColor}} !important;
+  color: {{primaryColor}} !important;
+  font-weight: bold;
+}
 </style>
 
 <div class="color-break" ng-style="{background: primaryColor}"></div>
@@ -56,12 +65,19 @@ label{
         <img class="img-responsive" src="assets/images/logos/{{teamImage}}" alt="{{selectedTeam}}">
       </div>
     </div>
-  </div>
+
     <p ng-show="selectedTeamId < 0">Welcome to NBAngular, choose a team to get started</p>
-    <label ng-show="selectedTeamId > -1" class="text-center" for="team-select">Select A Team:</label>
+    <div class="row" ng-show="selectedTeamId > -1">
+      <div class="col-xs-2 col-xs-offset-5">
+        <div class="pick-a-team text-center" ng-click="goHome()">
+          SELECT TEAM:
+        </div>
+      </div>
+    </div>
     <select ng-model="selectedTeam" name="teams" id="team-select" class="form-control">
       <option ng-repeat="team in main.league" value="{{team.teamName}}">{{team.teamName}}</option>
     </select>
+  </div>
 </header>
 
 
