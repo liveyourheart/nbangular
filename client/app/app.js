@@ -1,9 +1,6 @@
 'use strict';
 
 angular.module('nbaPlaygroundApp', [
-  'nbaPlaygroundApp.auth',
-  'nbaPlaygroundApp.admin',
-  'nbaPlaygroundApp.constants',
   'ngCookies',
   'ngResource',
   'ngSanitize',

@@ -14,11 +14,6 @@ export default function(app) {
   app.use('/api/teamSplits', require('./api/teamSplit'));
   app.use('/api/teamStats', require('./api/teamStat'));
   app.use('/api/rosters', require('./api/roster'));
-  app.use('/api/teams', require('./api/team'));
-  app.use('/api/things', require('./api/thing'));
-  app.use('/api/users', require('./api/user'));
-
-  app.use('/auth', require('./auth'));
 
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')
