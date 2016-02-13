@@ -69,7 +69,7 @@ export function index(req, res) {
 
 // Gets a single PlayerStat from the DB
 export function show(req, res) {
-  nba.api.playerInfo({playerId: req.params.id})
+  nba.api.playerProfile({playerId: req.params.id})
     .then(respondWithResult(res))
     .catch(handleError(res));
 }

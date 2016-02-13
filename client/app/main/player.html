@@ -182,8 +182,163 @@ label{
 
 
 
-  <div class="player-stats-display" ng-show="tabs[0].active == true">
-    <h1 class="text-center">STATS COMING SOON</h1>
+  <div class="player-stats-display text-center" ng-show="tabs[0].active == true">
+
+    <h1>#{{cpi.jersey}} {{cpi.displayFirstLast | uppercase}}</h1>
+
+
+    <div class="season-avg-stats-table">
+      <h1>Season Averages</h1>
+      <div class="table-responsive">
+        <table class="table">
+          <tr>
+            <th>GP</th>
+            <th>WIN%</th>
+            <th>MIN</th>
+            <th>FGM</th>
+            <th>FGA</th>
+            <th>FG%</th>
+            <th>3PM</th>
+            <th>3PA</th>
+            <th>3P%</th>
+            <th>FTM</th>
+            <th>FTA</th>
+            <th>FT%</th>
+            <th>OREB</th>
+            <th>DREB</th>
+            <th>REB</th>
+            <th>AST</th>
+            <th>TOV</th>
+            <th>BLK</th>
+            <th>PTS</th>
+            <th>+/-</th>
+          </tr>
+
+          <tr>
+            <th>{{seasonAvg.gp}}</th>
+            <th>{{seasonAvg.wPct}}</th>
+            <th>{{seasonAvg.min}}</th>
+            <th>{{seasonAvg.fgm}}</th>
+            <th>{{seasonAvg.fga}}</th>
+            <th>{{seasonAvg.fgPct}}</th>
+            <th>{{seasonAvg.fG3M}}</th>
+            <th>{{seasonAvg.fG3A}}</th>
+            <th>{{seasonAvg.fg3Pct}}</th>
+            <th>{{seasonAvg.ftm}}</th>
+            <th>{{seasonAvg.fta}}</th>
+            <th>{{seasonAvg.ftPct}}</th>
+            <th>{{seasonAvg.oreb}}</th>
+            <th>{{seasonAvg.dreb}}</th>
+            <th>{{seasonAvg.reb}}</th>
+            <th>{{seasonAvg.ast}}</th>
+            <th>{{seasonAvg.tov}}</th>
+            <th>{{seasonAvg.blk}}</th>
+            <th>{{seasonAvg.pts}}</th>
+            <th>{{seasonAvg.plusMinus}}</th>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+
+    <div class="career-avg-stats-table">
+      <h1>Career Averages</h1>
+      <div class="table-responsive">
+        <table class="table">
+          <tr>
+            <th>MIN</th>
+            <th>FGM</th>
+            <th>FGA</th>
+            <th>FG%</th>
+            <th>3PM</th>
+            <th>3PA</th>
+            <th>3P%</th>
+            <th>FTM</th>
+            <th>FTA</th>
+            <th>FT%</th>
+            <th>OREB</th>
+            <th>DREB</th>
+            <th>REB</th>
+            <th>AST</th>
+            <th>TOV</th>
+            <th>BLK</th>
+            <th>PTS</th>
+          </tr>
+
+          <tr>
+            <th>{{careerAvg.min}}</th>
+            <th>{{careerAvg.fgm}}</th>
+            <th>{{careerAvg.fga}}</th>
+            <th>{{careerAvg.fgPct}}</th>
+            <th>{{careerAvg.fG3M}}</th>
+            <th>{{careerAvg.fG3A}}</th>
+            <th>{{careerAvg.fg3Pct}}</th>
+            <th>{{careerAvg.ftm}}</th>
+            <th>{{careerAvg.fta}}</th>
+            <th>{{careerAvg.ftPct}}</th>
+            <th>{{careerAvg.oreb}}</th>
+            <th>{{careerAvg.dreb}}</th>
+            <th>{{careerAvg.reb}}</th>
+            <th>{{careerAvg.ast}}</th>
+            <th>{{careerAvg.tov}}</th>
+            <th>{{careerAvg.blk}}</th>
+            <th>{{careerAvg.pts}}</th>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+
+    <div class="career-total-stats-table">
+      <h1>Career Totals</h1>
+      <div class="table-responsive">
+        <table class="table">
+          <tr>
+            <th>MIN</th>
+            <th>FGM</th>
+            <th>FGA</th>
+            <th>FG%</th>
+            <th>3PM</th>
+            <th>3PA</th>
+            <th>3P%</th>
+            <th>FTM</th>
+            <th>FTA</th>
+            <th>FT%</th>
+            <th>OREB</th>
+            <th>DREB</th>
+            <th>REB</th>
+            <th>AST</th>
+            <th>TOV</th>
+            <th>BLK</th>
+            <th>PTS</th>
+          </tr>
+
+          <tr>
+            <th>{{careerTotal.min}}</th>
+            <th>{{careerTotal.fgm}}</th>
+            <th>{{careerTotal.fga}}</th>
+            <th>{{careerTotal.fgPct}}</th>
+            <th>{{careerTotal.fG3M}}</th>
+            <th>{{careerTotal.fG3A}}</th>
+            <th>{{careerTotal.fg3Pct}}</th>
+            <th>{{careerTotal.ftm}}</th>
+            <th>{{careerTotal.fta}}</th>
+            <th>{{careerTotal.ftPct}}</th>
+            <th>{{careerTotal.oreb}}</th>
+            <th>{{careerTotal.dreb}}</th>
+            <th>{{careerTotal.reb}}</th>
+            <th>{{careerTotal.ast}}</th>
+            <th>{{careerTotal.tov}}</th>
+            <th>{{careerTotal.blk}}</th>
+            <th>{{careerTotal.pts}}</th>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+
+
+
   </div>
 
   <div class="player-charts-display" ng-show="tabs[2].active == true">
