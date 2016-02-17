@@ -6,6 +6,17 @@ body{
 label{
   color: {{primaryColor}};
 }
+#team-select{
+  background-color: {{secondaryColor}} !important;
+  color: {{primaryColor}} !important;
+  font-weight: bold;
+}
+#stat-select{
+  background-color: {{secondaryColor}} !important;
+  color: {{primaryColor}} !important;
+  font-weight: bold;
+  margin-top: 5px;
+}
 .circle-rank{
   color: {{primaryColor}};
   background: {{secondaryColor}};
@@ -49,11 +60,32 @@ label{
   color: {{secondaryColor}};
   background: {{primaryColor}};
 }
-#team-select{
-  background-color: {{secondaryColor}} !important;
-  color: {{primaryColor}} !important;
-  font-weight: bold;
+.bar{
+  background: {{secondaryColor}};
+  fill: {{secondaryColor}};
+  height: 200px;
+  color: {{primaryColor}};
 }
+.bar-text{
+  fill: {{primaryColor}};
+}
+
+.bar-chart-border{
+  border: 2px solid {{secondaryColor}};
+  padding: 10px;
+}
+.bar-chart-title{
+  background: {{secondaryColor}};
+  color: {{primaryColor}};
+  margin-top: 2px;
+  padding: 5px;
+}
+svg{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 </style>
 
 <div class="color-break" ng-style="{background: primaryColor}"></div>
@@ -195,6 +227,19 @@ label{
 
   <div class="team-charts-display" ng-show="tabs[2].active == true">
     <h1 class="text-center">CHARTS COMING SOON</h1>
+
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 bar-chart-border text-center">
+        <h3 class="bar-chart-title">Example Bar Chart</h3>
+        <bar-chart class="bar-chart" data="myData"></bar-chart>
+        <select ng-model="selectedStat" name="stats" id="stat-select" class="form-control">
+          <option ng-repeat="stat in main.stats" value="{{stat.id}}">{{stat.name}}</option>
+        </select>
+      </div>
+
+    </div>
+
+
   </div>
 
 

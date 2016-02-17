@@ -4,10 +4,12 @@
 
 class MainController {
 
-  constructor($http, league, $scope, $location) {
+  constructor($http, league, stats, $scope, $location) {
     this.$http = $http;
     this.awesomeThings = [];
     this.league = league;
+    this.stats = stats;
+    $scope.selectedStat = this.stats[0];
     $scope.selectedTeam = 'Pick a Team';
     $scope.selectedTeamId = -1;
     $scope.league = league;
@@ -20,6 +22,59 @@ class MainController {
     $scope.teamStats = undefined;
     $scope.teamInfo = undefined;
     $scope.teamDashboard = undefined;
+
+    $scope.myData = [
+      {
+        name: 'A',
+        stat: 10
+      },
+      {
+        name: 'B',
+        stat: 15
+      },
+      {
+        name: 'C',
+        stat: 23
+      },
+      {
+        name: 'D',
+        stat: 52
+      },
+      {
+        name: 'E',
+        stat: 34
+      },
+      {
+        name: 'F',
+        stat: 13
+      },
+      {
+        name: 'G',
+        stat: 30
+      },
+      {
+        name: 'H',
+        stat: 16
+      },
+      {
+        name: 'I',
+        stat: 12
+      },
+      {
+        name: 'J',
+        stat: 19
+      },
+      {
+        name: 'K',
+        stat: 32
+      },
+      {
+        name: 'L',
+        stat: 48
+      }
+    ];
+
+
     $scope.tabs = [
       {
         id: 'roster',
@@ -56,6 +111,15 @@ class MainController {
         $scope.getTeamDashboard($scope.teamID);
 
       }
+    });
+
+    $scope.$watch('selectedStat', function(newVal, oldVal){
+      console.log(newVal);
+      for(var i = 0; i < $scope.myData.length; i++){
+        $scope.myData[i].stat += 5;
+      }
+      console.log('new data ' + $scope.myData[0].stat);
+
     });
 
     $scope.getTeamDashboard = function(teamID){
