@@ -4,7 +4,7 @@
 
 class MainController {
 
-  constructor($http, league, stats, $scope, $location) {
+  constructor($http, league, stats, tsData, teamTabs, $scope, $location) {
     this.$http = $http;
     this.awesomeThings = [];
     this.league = league;
@@ -22,76 +22,8 @@ class MainController {
     $scope.teamStats = undefined;
     $scope.teamInfo = undefined;
     $scope.teamDashboard = undefined;
-
-    $scope.myData = [
-      {
-        name: 'A',
-        stat: 10
-      },
-      {
-        name: 'B',
-        stat: 15
-      },
-      {
-        name: 'C',
-        stat: 23
-      },
-      {
-        name: 'D',
-        stat: 52
-      },
-      {
-        name: 'E',
-        stat: 34
-      },
-      {
-        name: 'F',
-        stat: 13
-      },
-      {
-        name: 'G',
-        stat: 30
-      },
-      {
-        name: 'H',
-        stat: 16
-      },
-      {
-        name: 'I',
-        stat: 12
-      },
-      {
-        name: 'J',
-        stat: 19
-      },
-      {
-        name: 'K',
-        stat: 32
-      },
-      {
-        name: 'L',
-        stat: 48
-      }
-    ];
-
-
-    $scope.tabs = [
-      {
-        id: 'roster',
-        active: false,
-        link: 'tab-menu-option-left'
-      },
-      {
-        id: 'main',
-        active: true,
-        link: 'tab-menu-option-middle'
-      },
-      {
-        id: 'charts',
-        active: false,
-        link: 'tab-menu-option-right'
-      }
-    ];
+    $scope.tsData = tsData;
+    $scope.tabs = teamTabs;
 
     //watches select of teams and updates info
     $scope.$watch('selectedTeam', function(newVal, oldVal){
@@ -114,12 +46,15 @@ class MainController {
     });
 
     $scope.$watch('selectedStat', function(newVal, oldVal){
-      console.log(newVal);
-      for(var i = 0; i < $scope.myData.length; i++){
-        $scope.myData[i].stat += 5;
+      if(newVal){
+        var statid = JSON.parse(newVal).id;
+        $scope.getTeamSplitsData(statid);
       }
-      console.log('new data ' + $scope.myData[0].stat);
 
+
+    });
+
+    $scope.$watch('myData', function(newVal, oldVal){
     });
 
     $scope.getTeamDashboard = function(teamID){
@@ -160,6 +95,106 @@ class MainController {
     $scope.goToPlayer = function(playerID){
       $location.path('/' + playerID);
     };
+
+    $scope.getTeamSplitsData = function(statId){
+      var stat = statId;
+      $scope.tsData = [];
+      if(!$scope.teamDashboard){return;}
+      var oa = $scope.teamDashboard.overallTeamDashboard[0][stat];
+      var w = $scope.teamDashboard.winsLossesTeamDashboard[0][stat];
+      var l = $scope.teamDashboard.winsLossesTeamDashboard[1][stat];
+      var h = $scope.teamDashboard.locationTeamDashboard[0][stat];
+      var a = $scope.teamDashboard.locationTeamDashboard[1][stat];
+      var oct = $scope.teamDashboard.monthTeamDashboard[0][stat];
+      var nov = $scope.teamDashboard.monthTeamDashboard[1][stat];
+      var dec = $scope.teamDashboard.monthTeamDashboard[2][stat];
+      var jan = $scope.teamDashboard.monthTeamDashboard[3][stat];
+      var feb = $scope.teamDashboard.monthTeamDashboard[4][stat];
+      var b2b = $scope.teamDashboard.daysRestTeamDashboard[0][stat];
+      var day1 = $scope.teamDashboard.daysRestTeamDashboard[1][stat];
+      var day2 = $scope.teamDashboard.daysRestTeamDashboard[2][stat];
+
+      var overall = {
+        name: 'Overall',
+        stat: oa
+      };
+      var wins = {
+        name: 'In Wins',
+        stat: w
+      };
+      var losses = {
+        name: 'In Losses',
+        stat: l
+      };
+      var home = {
+        name: 'At Home',
+        stat: h
+      };
+      var away = {
+        name: 'On The Road',
+        stat: a
+      };
+      var  october = {
+        name: 'In October',
+        stat: oct
+      };
+      var november = {
+        name: 'In November',
+        stat: nov
+      };
+      var december = {
+        name: 'In December',
+        stat: dec
+      };
+      var january = {
+        name: 'In January',
+        stat: jan
+      };
+      var february = {
+        name: 'In February',
+        stat: feb
+      };
+      var back2back = {
+        name: 'In Back To Backs',
+        stat: b2b
+      };
+      var dayRest1 = {
+        name: 'On One Day Rest',
+        stat: day1
+      };
+      var dayRest2= {
+        name: 'On Two Days Rest',
+        stat: day2
+      };
+      $scope.tsData.push(overall);
+      $scope.tsData.push(wins);
+      $scope.tsData.push(losses);
+      $scope.tsData.push(home);
+      $scope.tsData.push(away);
+      $scope.tsData.push(october);
+      $scope.tsData.push(november);
+      $scope.tsData.push(december);
+      $scope.tsData.push(january);
+      $scope.tsData.push(february);
+      $scope.tsData.push(back2back);
+      $scope.tsData.push(dayRest1);
+      $scope.tsData.push(dayRest2);
+
+    };
+
+    $scope.updateData = function(){
+      var length = $scope.myData.length;
+      $scope.myData = [];
+       for(var i = 0; i < length; i++){
+         var obj = {
+           name: 'name ' + i,
+           stat: Math.floor((Math.random()*50)+1)
+         };
+
+         $scope.myData.push(obj);
+       }
+    };
+
   }
 
   }
