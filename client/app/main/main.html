@@ -6,6 +6,40 @@ body{
 label{
   color: {{primaryColor}};
 }
+#team-select{
+  background-color: {{secondaryColor}} !important;
+  color: {{primaryColor}} !important;
+  font-weight: bold;
+}
+#stat-select{
+  background-color: {{secondaryColor}} !important;
+  color: {{primaryColor}} !important;
+  font-weight: bold;
+  margin-top: 5px;
+}
+.bar{
+  background: {{secondaryColor}};
+  fill: {{secondaryColor}};
+  height: 200px;
+  color: {{primaryColor}};
+  -webkit-transition: height .5s, -webkit-transform .5s;
+   transition: height .5s, transform .5s;
+}
+.bar-text{
+  fill: {{primaryColor}};
+}
+
+.bar-chart-border{
+  border: 2px solid {{secondaryColor}};
+  padding: 10px;
+}
+.bar-chart-title{
+  background: {{secondaryColor}};
+  color: {{primaryColor}};
+  margin-top: 2px;
+  padding: 5px;
+}
+
 .circle-rank{
   color: {{primaryColor}};
   background: {{secondaryColor}};
@@ -20,10 +54,21 @@ label{
   background:{{primaryColor}};
   color: {{secondaryColor}};
 }
+.nba-title{
+  background: {{primaryColor}};
+  color: {{secondaryColor}};
+}
+.player{
+  font-weight: bold;
+  font-size: 16px;
+}
 .player:hover {
   background: {{secondaryColor}};
   color: {{primaryColor}};
   cursor: pointer;
+}
+.team-charts-display{
+  margin-top: 50px;
 }
 .team-main-display-header{
   background: {{secondaryColor}};
@@ -49,14 +94,17 @@ label{
   color: {{secondaryColor}};
   background: {{primaryColor}};
 }
-#team-select{
-  background-color: {{secondaryColor}} !important;
-  color: {{primaryColor}} !important;
-  font-weight: bold;
+svg{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 </style>
 
-<div class="color-break" ng-style="{background: primaryColor}"></div>
+<div class="nba-title color-break text-center">
+  <h1>NBAngular</h1>
+</div>
 
 <header class="hero-unit" id="banner">
   <div class="container">
@@ -194,7 +242,19 @@ label{
   </div>
 
   <div class="team-charts-display" ng-show="tabs[2].active == true">
-    <h1 class="text-center">CHARTS COMING SOON</h1>
+
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 bar-chart-border text-center">
+        <h3 class="bar-chart-title">Team Splits</h3>
+        <bar-chart class="bar-chart" data="tsData"></bar-chart>
+        <select ng-model="selectedStat" name="stats" id="stat-select" class="form-control">
+          <option ng-repeat="stat in main.stats" value="{{stat}}">{{stat.name}}</option>
+        </select>
+      </div>
+
+    </div>
+
+
   </div>
 
 

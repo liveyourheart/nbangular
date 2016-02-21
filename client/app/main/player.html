@@ -6,6 +6,40 @@ body{
 label{
   color: {{primaryColor}};
 }
+#splits-stat-select{
+  background-color: {{secondaryColor}} !important;
+  color: {{primaryColor}} !important;
+  font-weight: bold;
+  margin-top: 5px;
+}
+#ten-game-stat-select{
+  background-color: {{secondaryColor}} !important;
+  color: {{primaryColor}} !important;
+  font-weight: bold;
+  margin-top: 5px;
+}
+.bar{
+  background: {{secondaryColor}};
+  fill: {{secondaryColor}};
+  height: 200px;
+  color: {{primaryColor}};
+  -webkit-transition: height .5s, -webkit-transform .5s;
+   transition: height .5s, transform .5s;
+}
+.bar-text{
+  fill: {{primaryColor}};
+}
+
+.bar-chart-border{
+  border: 2px solid {{secondaryColor}};
+  padding: 10px;
+}
+.bar-chart-title{
+  background: {{secondaryColor}};
+  color: {{primaryColor}};
+  margin-top: 2px;
+  padding: 5px;
+}
 .circle-rank{
   color: {{primaryColor}};
   background: {{secondaryColor}};
@@ -31,7 +65,13 @@ label{
   border-left: 3px solid {{secondaryColor}};
   border: 3px solid {{secondaryColor}};
 }
+.chart-tab-menu-option-left{
+  border: 3px solid {{secondaryColor}};
+}
 .tab-menu-option-left{
+  border: 3px solid {{secondaryColor}};
+}
+.chart-tab-menu-option-right{
   border: 3px solid {{secondaryColor}};
 }
 .tab-menu-option-right{
@@ -41,6 +81,13 @@ label{
   background: {{secondaryColor}};
   color: {{primaryColor}};
 }
+.chart-tab-menu-option-selected{
+  background: {{secondaryColor}};
+  color: {{primaryColor}};
+}
+.player-charts-display{
+  margin-top: 50px;
+}
 .home-button{
   border: 3px solid {{secondaryColor}};
   color: {{secondaryColor}};
@@ -48,7 +95,9 @@ label{
 }
 </style>
 
-<div class="color-break" ng-style="{background: primaryColor}"></div>
+<div class="color-break text-center" ng-style="{background: primaryColor; color: secondaryColor}">
+  <h1 class="nba-title">NBAngular</h1>
+</div>
 
 <header class="hero-unit" id="banner">
   <div class="container">
@@ -78,7 +127,7 @@ label{
         <h3>INFO</h3>
       </div>
       <div class="col-xs-4 col-md-2 tab-menu-option-right" ng-click="tabIt(tabs[2].id)">
-        <h3>CHARTS</h3>
+        <h3>Last 10</h3>
       </div>
     </div>
   </div>
@@ -342,7 +391,18 @@ label{
   </div>
 
   <div class="player-charts-display" ng-show="tabs[2].active == true">
-    <h1 class="text-center">CHARTS COMING SOON</h1>
+
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 bar-chart-border text-center">
+        <h2>#{{cpi.jersey}} {{cpi.displayFirstLast | uppercase}}</h2>
+        <h3 class="bar-chart-title">Last 10 Games</h3>
+        <bar-chart class="bar-chart" data="player10"></bar-chart>
+        <select ng-model="selectedStatTen" name="statTen" id="ten-stat-select" class="form-control">
+          <option ng-repeat="stat in player.stats10" value="{{stat.id}}">{{stat.name}}</option>
+        </select>
+      </div>
+    </div>
+
   </div>
 
 </div>
