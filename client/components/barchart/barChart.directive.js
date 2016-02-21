@@ -33,8 +33,8 @@ angular.module('nbaPlaygroundApp')
         });
 
         var yScale = d3.scale.linear()
-          .domain([0, d3.max(justStats)])
-          .range([0, h]);
+          .domain([d3.max(justStats)], 0)
+          .range([h, 0]);
 
 
         var svg = d3.select(element[0]).append('svg');
@@ -52,12 +52,12 @@ angular.module('nbaPlaygroundApp')
             return i * xMult;
           })
           .attr('y', function(d) {
-            return h - 10 - yScale(d.stat);
+            return yScale(d.stat);
           })
           .attr('width', barWidth)
           .attr('fill', '#000')
           .style('height', function(d) {
-            return yScale(d) + 5;
+            return h - yScale(d) + 5;
           });
 
         svg.selectAll('rect')

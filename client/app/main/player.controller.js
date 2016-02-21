@@ -6,9 +6,11 @@ class PlayerController {
 
 //cpi - commonPlayerInfo
 //hs - headlineStats
-  constructor($http, league, $scope, $location, $stateParams) {
+  constructor($http, league, playerTabs, playerSplits, playerSplitsStats, playerTenData, playerTenStats, $scope, $location, $stateParams) {
     this.$http = $http;
     this.league = league;
+    this.stats = playerSplitsStats;
+    this.stats10 = playerTenStats;
     $scope.league = league;
     $scope.teamImage = undefined;
     $scope.primaryColor = undefined;
@@ -27,25 +29,26 @@ class PlayerController {
     $scope.careerTotal = undefined;
     $scope.seasonAvg = undefined;
     $scope.seasonHigh = undefined;
+    $scope.tabs = playerTabs;
+    $scope.playerSplits = playerSplits;
+    $scope.player10 = playerTenData;
+    $scope.selectedStatSplits = this.stats[1];
+    $scope.selectedStatTen = this.stats10[1];
 
 
-    $scope.tabs = [
-      {
-        id: 'stats',
-        active: false,
-        link: 'tab-menu-option-left'
-      },
-      {
-        id: 'info',
-        active: true,
-        link: 'tab-menu-option-middle'
-      },
-      {
-        id: 'charts',
-        active: false,
-        link: 'tab-menu-option-right'
+    // $scope.$watch('selectedStatSplits', function(newVal){
+    //   if(newVal){
+    //     var statid = JSON.parse(newVal).id;
+    //     $scope.getPlayerSplitsData(statid);
+    //   }
+    // });
+
+    $scope.$watch('selectedStatTen', function(newVal){
+      if(newVal){
+        $scope.getPlayerTenData(newVal);
       }
-    ];
+    });
+
 
     $scope.getPlayerStats = function(playerID) {
       $http.get('/api/playerStats/' + playerID).then(response =>{
@@ -57,11 +60,6 @@ class PlayerController {
         $scope.careerTotal = response.data.overviewCareerTotal[0];
         $scope.seasonAvg = response.data.overviewSeasonAvg[0];
         $scope.seasonHigh = response.data.overviewSeasonHigh[0];
-
-        console.log($scope.careerAvg);
-        console.log($scope.seasonAvg);
-
-
       });
     };
 
@@ -101,12 +99,68 @@ class PlayerController {
       }
     };
 
+    $scope.getPlayerSplitsData = function(statId){
+      var stat = statId;
+      $scope.playerSplits = [];
+      var seasonAvg = $scope.seasonAvg[stat];
+      var careerAvg = $scope.careerAvg[stat];
+      var seasonHigh = $scope.seasonHigh[stat];
+      var careerHigh = $scope.careerHigh[stat];
+
+      var sa = {
+        name: 'Season Average',
+        stat: seasonAvg
+      };
+      var ca = {
+        name: 'Career Average',
+        stat: careerAvg
+      };
+      var sh = {
+        name: 'Season High',
+        stat: seasonHigh
+      };
+      var ch = {
+        name: 'Career High Average',
+        stat: careerHigh
+      };
+      $scope.playerSplits.push(sa);
+      $scope.playerSplits.push(ca);
+      $scope.playerSplits.push(sh);
+      $scope.playerSplits.push(ch);
+
+    };
+
+    $scope.initTabs = function(){
+      $scope.tabs[0].active = false;
+      $scope.tabs[1].active = true;
+      $scope.tabs[2].active = false;
+
+    }
+
+    $scope.getPlayerTenData = function(statId){
+      var stat = statId;
+      $scope.player10 = [];
+
+      console.log($scope.gameLogs);
+      for(var i = $scope.gameLogs.length -1 ; i >= 0; i--){
+        var obj = {
+          name: $scope.gameLogs[i].gameDate + ' '+
+                $scope.gameLogs[i].matchup + ' - ' +
+                $scope.gameLogs[i].wl,
+          stat: $scope.gameLogs[i][stat]
+        };
+        $scope.player10.push(obj);
+      }
+
+    };
+
     $scope.goHome = function(){
       $location.path('/');
     };
 
     $scope.getPlayerStats($scope.playerId);
     $scope.getPlayerInfo($scope.playerId);
+    $scope.initTabs();
 
   }
 

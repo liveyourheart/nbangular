@@ -9,13 +9,13 @@ class MainController {
     this.awesomeThings = [];
     this.league = league;
     this.stats = stats;
-    $scope.selectedStat = this.stats[0];
+    $scope.selectedStat = this.stats[1];
     $scope.selectedTeam = 'Pick a Team';
     $scope.selectedTeamId = -1;
     $scope.league = league;
     $scope.teamImage = 'nbangular.png';
     $scope.primaryColor = '#797979';
-    $scope.secondaryColor = '#ffffff';
+    $scope.secondaryColor = '#fff';
     $scope.teamID = 0;
     $scope.roster = undefined;
     $scope.coaches = undefined;
@@ -45,7 +45,7 @@ class MainController {
       }
     });
 
-    $scope.$watch('selectedStat', function(newVal, oldVal){
+    $scope.$watch('selectedStat', function(newVal){
       if(newVal){
         var statid = JSON.parse(newVal).id;
         $scope.getTeamSplitsData(statid);
@@ -91,6 +91,13 @@ class MainController {
         }
       }
     };
+
+    $scope.initTabs = function(){
+      $scope.tabs[0].active = false;
+      $scope.tabs[1].active = true;
+      $scope.tabs[2].active = false;
+
+    }
 
     $scope.goToPlayer = function(playerID){
       $location.path('/' + playerID);
@@ -194,6 +201,8 @@ class MainController {
          $scope.myData.push(obj);
        }
     };
+
+    $scope.initTabs();
 
   }
 

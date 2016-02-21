@@ -18,9 +18,28 @@ label{
   margin-top: 5px;
 }
 .bar{
+  background: {{secondaryColor}};
+  fill: {{secondaryColor}};
+  height: 200px;
+  color: {{primaryColor}};
   -webkit-transition: height .5s, -webkit-transform .5s;
    transition: height .5s, transform .5s;
 }
+.bar-text{
+  fill: {{primaryColor}};
+}
+
+.bar-chart-border{
+  border: 2px solid {{secondaryColor}};
+  padding: 10px;
+}
+.bar-chart-title{
+  background: {{secondaryColor}};
+  color: {{primaryColor}};
+  margin-top: 2px;
+  padding: 5px;
+}
+
 .circle-rank{
   color: {{primaryColor}};
   background: {{secondaryColor}};
@@ -34,6 +53,14 @@ label{
 .chart div{
   background:{{primaryColor}};
   color: {{secondaryColor}};
+}
+.nba-title{
+  background: {{primaryColor}};
+  color: {{secondaryColor}};
+}
+.player{
+  font-weight: bold;
+  font-size: 16px;
 }
 .player:hover {
   background: {{secondaryColor}};
@@ -67,26 +94,6 @@ label{
   color: {{secondaryColor}};
   background: {{primaryColor}};
 }
-.bar{
-  background: {{secondaryColor}};
-  fill: {{secondaryColor}};
-  height: 200px;
-  color: {{primaryColor}};
-}
-.bar-text{
-  fill: {{primaryColor}};
-}
-
-.bar-chart-border{
-  border: 2px solid {{secondaryColor}};
-  padding: 10px;
-}
-.bar-chart-title{
-  background: {{secondaryColor}};
-  color: {{primaryColor}};
-  margin-top: 2px;
-  padding: 5px;
-}
 svg{
   display: block;
   margin-left: auto;
@@ -95,7 +102,9 @@ svg{
 
 </style>
 
-<div class="color-break" ng-style="{background: primaryColor}"></div>
+<div class="nba-title color-break text-center">
+  <h1>NBAngular</h1>
+</div>
 
 <header class="hero-unit" id="banner">
   <div class="container">
