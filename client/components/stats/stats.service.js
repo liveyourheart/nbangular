@@ -46,7 +46,7 @@ angular.module('nbaPlaygroundApp')
     },
     {
       name: '3pt FG Percentage',
-      id: 'fG3Pct'
+      id: 'fg3Pct'
     },
     {
       name: 'Free Throws Made',
@@ -103,10 +103,6 @@ angular.module('nbaPlaygroundApp')
     {
       name: 'Points',
       id: 'pts'
-    },
-    {
-      name: '+/-',
-      id: 'plusMinus'
     }
   ];
 
