@@ -103,10 +103,6 @@ angular.module('nbaPlaygroundApp')
     {
       name: 'Points',
       id: 'pts'
-    },
-    {
-      name: '+/-',
-      id: 'plusMinus'
     }
   ];
 
