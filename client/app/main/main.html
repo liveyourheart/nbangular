@@ -246,7 +246,7 @@ svg{
     <div class="row">
       <div class="col-md-8 col-md-offset-2 bar-chart-border text-center">
         <h3 class="bar-chart-title">Team Splits</h3>
-        <bar-chart class="bar-chart" data="tsData"></bar-chart>
+        <bar-chart class="bar-chart" data="tsData" chartid="'team-splits'"></bar-chart>
         <select ng-model="selectedStat" name="stats" id="stat-select" class="form-control">
           <option ng-repeat="stat in main.stats" value="{{stat}}">{{stat.name}}</option>
         </select>
