@@ -40,6 +40,28 @@ label
   margin-top 20px
   margin-bottom 20px
 
+svg
+  display block
+  margin-left auto
+  margin-right auto
+
+#team-select
+  font-weight bold
+
+#stat-select
+  font-weight bold
+  margin-top 5px
+
+#splits-stat-select
+  font-weight bold
+  margin-top 5px
+
+#ten-game-stat-select
+  font-weight bold
+  margin-top 5px
+
+
+
 /************************
         DISPLAYS
 ************************/
@@ -165,8 +187,31 @@ PLAYER PAGE BACK BUTTON
 Bar Chart
 ************************/
 
+.bar
+  height 200px
+  -webkit-transition: height .5s, -webkit-transform .5s;
+  transition: height .5s, transform .5s;
+
 .bar-chart-border
   border-radius $display-border-radius
+  padding 10px
+
+.bar-chart-title
+  margin-top 2px
+  padding 5px
+
+.player
+  font-weight bold
+  font-size 16px
+
+.player:hover
+  cursor pointer
+
+.player-chart
+  margin-top 20px
+
+.player-charts-display
+  margin-top 50px
 
 .player-name
   border-radius $display-border-radius
