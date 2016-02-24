@@ -40,6 +40,28 @@ label
   margin-top 20px
   margin-bottom 20px
 
+svg
+  display block
+  margin-left auto
+  margin-right auto
+
+#team-select
+  font-weight bold
+
+#stat-select
+  font-weight bold
+  margin-top 5px
+
+#splits-stat-select
+  font-weight bold
+  margin-top 5px
+
+#ten-game-stat-select
+  font-weight bold
+  margin-top 5px
+
+
+
 /************************
         DISPLAYS
 ************************/
@@ -80,8 +102,8 @@ label
 ************************/
 
 .circle-rank
-  height: 250px;
-  width: 250px;
+  height: 200px;
+  width: 200px;
   border-radius: 50%;
   margin-right: auto;
   margin-left: auto;
@@ -89,12 +111,12 @@ label
 
 
 .circle-rank-half
-  height: 125px;
-  line-height: 125px;
+  height: 100px;
+  line-height: 100px;
   padding: 0;
   margin: 0;
   font-weight bold
-  font-size 500%
+  font-size 400%
 
 .circle-rank-label
   font-size 400%
@@ -106,6 +128,16 @@ label
   margin-left auto
   margin-right auto
 
+@media screen and (max-width: 500px)
+  .circle-rank
+    height: 150px;
+    width: 150px;
+  .circle-rank-half
+    height: 75px
+    line-height: 75px
+    font-size: 350%
+  .circle-rank-label
+    font-size 350%
 /************************
         COLOR BREAK
 ************************/
@@ -155,5 +187,32 @@ PLAYER PAGE BACK BUTTON
 Bar Chart
 ************************/
 
+.bar
+  height 200px
+  -webkit-transition: height .5s, -webkit-transform .5s;
+  transition: height .5s, transform .5s;
+
 .bar-chart-border
   border-radius $display-border-radius
+  padding 10px
+
+.bar-chart-title
+  margin-top 2px
+  padding 5px
+
+.player
+  font-weight bold
+  font-size 16px
+
+.player:hover
+  cursor pointer
+
+.player-chart
+  margin-top 20px
+
+.player-charts-display
+  margin-top 50px
+
+.player-name
+  border-radius $display-border-radius
+  margin-top: 20px

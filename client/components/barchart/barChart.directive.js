@@ -8,15 +8,21 @@ angular.module('nbaPlaygroundApp')
       restrict: 'E',
       replace: false,
       scope: {
-        data: '=data'
+        data: '=data',
+        chartid: '=chartid',
+        chartTitle: '=chartTitle'
       },
       link: function(scope, element, attrs) {
 
         var w = 600, h = 250;
         var xMult = w / scope.data.length;
         var barWidth = xMult - 2;
-        var chartTitle = d3.select('.bar-chart-title').text();
         var justStats = [];
+        var chartId = scope.chartid;
+        var textId = chartId + 'text';
+        var chartTitleId = scope.chartTitle;
+        var chartTitle = d3.select(chartTitleId).text();
+
 
         for(var i = 0; i < scope.data.length; i++){
           justStats.push(scope.data[i].stat);
@@ -47,7 +53,7 @@ angular.module('nbaPlaygroundApp')
           .enter()
           .append('rect')
           .transition().ease('elastic')
-          .attr('class', 'bar')
+          .attr('class', 'bar '+chartId)
           .attr('x', function(d, i) {
             return i * xMult;
           })
@@ -63,11 +69,11 @@ angular.module('nbaPlaygroundApp')
         svg.selectAll('rect')
           .data(scope.data)
           .on('mouseover', function(d){
-            d3.select('.bar-chart-title')
+            d3.select(chartTitleId)
               .text(d.name);
           })
           .on('mouseout', function(){
-            d3.select('.bar-chart-title')
+            d3.select(chartTitleId)
               .text(chartTitle);
           });
 
@@ -79,7 +85,7 @@ angular.module('nbaPlaygroundApp')
             return d.stat;
           })
           .attr({
-            'class': 'bar-text',
+            'class': 'bar-text ' +textId ,
             'text-anchor': 'middle',
             'font-family': 'Helvetica',
             'font-weight': 'bold',
@@ -100,9 +106,10 @@ angular.module('nbaPlaygroundApp')
             yScale = d3.scale.linear()
               .domain([0, d3.max(justStats)])
               .range([0, h]);
-            console.log(yScale);
+
             var rect = d3.selectAll('rect');
-            d3.selectAll('rect')
+            console.log(chartId);
+            d3.selectAll('.' +chartId)
               .data(scope.data)
               .style('height', function(d) {
                 return yScale(d.stat) + 5;
@@ -115,7 +122,7 @@ angular.module('nbaPlaygroundApp')
               })
 
 
-            d3.selectAll('text')
+            d3.selectAll('.'+textId)
               .data(scope.data)
               .text(function(d){
                 return d.stat;

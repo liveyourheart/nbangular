@@ -36,12 +36,11 @@ class PlayerController {
     $scope.selectedStatTen = this.stats10[1];
 
 
-    // $scope.$watch('selectedStatSplits', function(newVal){
-    //   if(newVal){
-    //     var statid = JSON.parse(newVal).id;
-    //     $scope.getPlayerSplitsData(statid);
-    //   }
-    // });
+    $scope.$watch('selectedStatSplits', function(newVal){
+      if(newVal){
+        $scope.getPlayerSplitsData(newVal);
+      }
+    });
 
     $scope.$watch('selectedStatTen', function(newVal){
       if(newVal){
@@ -141,7 +140,6 @@ class PlayerController {
       var stat = statId;
       $scope.player10 = [];
 
-      console.log($scope.gameLogs);
       for(var i = $scope.gameLogs.length -1 ; i >= 0; i--){
         var obj = {
           name: $scope.gameLogs[i].gameDate + ' '+
