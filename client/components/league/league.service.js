@@ -10,7 +10,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Atlanta Hawks',
     'simpleName': 'Hawks',
     'location': 'Atlanta',
-    'img': 'hawks.png',
+    // 'img': 'hawks.png',
+    'img': 'hawks.2a620f44.png',
     'primaryColor': '#CA1134',
     'secondaryColor':'#FFFFFF'
   },
@@ -20,7 +21,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Boston Celtics',
     'simpleName': 'Celtics',
     'location': 'Boston',
-    'img': 'celtics.png',
+    // 'img': 'celtics.png',
+    'img': 'celtics.7210c805.png',
     'primaryColor': '#0E7934',
     'secondaryColor':'#FFFFFF'
   },
@@ -30,7 +32,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Brooklyn Nets',
     'simpleName': 'Nets',
     'location': 'Brooklyn',
-    'img': 'nets.png',
+    // 'img': 'nets.png',
+    'img': 'nets.b2b2ec91.png',
     'primaryColor': '#2D2926',
     'secondaryColor':'#FFFFFF'
   },
@@ -40,7 +43,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Charlotte Hornets',
     'simpleName': 'Hornets',
     'location': 'Charlotte',
-    'img': 'hornets.png',
+    // 'img': 'hornets.png',
+    'img': 'hornets.42f9fae4.png',
     'primaryColor': '#1F1845',
     'secondaryColor':'#0F778B'
   },
@@ -50,7 +54,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Chicago Bulls',
     'simpleName': 'Bulls',
     'location': 'Chicago',
-    'img': 'bulls.png',
+    // 'img': 'bulls.png',
+    'img': 'bulls.76341a5b.png',
     'primaryColor': '#BA0B2F',
     'secondaryColor':'#FFFFFF'
   },
@@ -60,7 +65,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Cleveland Cavaliers',
     'simpleName': 'Cavaliers',
     'location': 'Cleveland',
-    'img': 'cavs.png',
+    // 'img': 'cavs.png',
+    'img': 'cavs.14d09b79.png',
     'primaryColor': '#70263D',
     'secondaryColor':'#FDB82C'
   },
@@ -70,7 +76,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Dallas Mavericks',
     'simpleName': 'Mavericks',
     'location': 'Dallas',
-    'img': 'mavs.png',
+    // 'img': 'mavs.png',
+    'img': 'mavs.338b8cf0.png',
     'primaryColor': '#0C58B7',
     'secondaryColor':'#FFFFFF'
   },
@@ -80,7 +87,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Denver Nuggets',
     'simpleName': 'Nuggets',
     'location': 'Denver',
-    'img': 'nuggets.png',
+    // 'img': 'nuggets.png',
+    'img': 'nuggets.a6c6f1fb.png',
     'primaryColor': '#4E91CB',
     'secondaryColor':'#FBB73A'
   },
@@ -90,7 +98,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Detroit Pistons',
     'simpleName': 'Pistons',
     'location': 'Detroit',
-    'img': 'pistons.png',
+    // 'img': 'pistons.png',
+    'img': 'pistons.9cfb5a31.png',
     'primaryColor': '#0F6DB5',
     'secondaryColor':'#EA1D4F'
   },
@@ -100,7 +109,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Golden State Warriors',
     'simpleName': 'Warriors',
     'location': 'Golden State',
-    'img': 'warriors.png',
+    // 'img': 'warriors.png',
+    'img': 'warriors.7725fffd.png',
     'primaryColor': '#0F6AB1',
     'secondaryColor':'#FEC33A'
   },
@@ -110,7 +120,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Houston Rockets',
     'simpleName': 'Rockets',
     'location': 'Houston',
-    'img': 'rockets.png',
+    // 'img': 'rockets.png',
+    'img': 'rockets.e5fa556a.png',
     'primaryColor': '#D11848',
     'secondaryColor':'#FFFFFF'
   },
@@ -120,7 +131,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Indiana Pacers',
     'simpleName': 'Pacers',
     'location': 'Indiana',
-    'img': 'pacers.png',
+    // 'img': 'pacers.png',
+    'img': 'pacers.e123a03d.png',
     'primaryColor': '#03285B',
     'secondaryColor':'#FEC33A'
   },
@@ -130,7 +142,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Los Angeles Clippers',
     'simpleName': 'Clippers',
     'location': 'Los Angeles',
-    'img': 'clippers.png',
+    // 'img': 'clippers.png',
+    'img': 'clippers.00b36656.png',
     'primaryColor': '#0949AB',
     'secondaryColor':'#D5123F'
   },
@@ -140,7 +153,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Los Angeles Lakers',
     'simpleName': 'Lakers',
     'location': 'Los Angeles',
-    'img': 'lakers.png',
+    // 'img': 'lakers.png',
+    'img': 'lakers.888e12a0.png',
     'primaryColor': '#643184',
     'secondaryColor':'#FCC742'
   },
@@ -150,7 +164,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Memphis Grizzlies',
     'simpleName': 'Grizzlies',
     'location': 'Memphis',
-    'img': 'grizzlies.png',
+    // 'img': 'grizzlies.png',
+    'img': 'grizzlies.6fde17f9.png',
     'primaryColor': '#24385A',
     'secondaryColor':'#638AB7'
   },
@@ -160,7 +175,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Miami Heat',
     'simpleName': 'Heat',
     'location': 'Miami',
-    'img': 'heat.png',
+    // 'img': 'heat.png',
+    'img': 'heat.075b796b.png',
     'primaryColor': '#000000',
     'secondaryColor':'#960730'
   },
@@ -170,7 +186,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Milwaukee Bucks',
     'simpleName': 'Bucks',
     'location': 'Milwaukee',
-    'img': 'bucks.png',
+    // 'img': 'bucks.png',
+    'img': 'bucks.63906b07.png',
     'primaryColor': '#284E38',
     'secondaryColor':'#DFD2B2'
   },
@@ -180,7 +197,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Minnesota Timberwolves',
     'simpleName': 'Timberwolves',
     'location': 'Minnesota',
-    'img': 'timberwolves.png',
+    // 'img': 'timberwolves.png',
+    'img': 'timberwolves.b1457726.png',
     'primaryColor': '#085182',
     'secondaryColor':'#FFFFFF'
   },
@@ -190,7 +208,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'New Orleans Pelicans',
     'simpleName': 'Pelicans',
     'location': 'New Orleans',
-    'img': 'pelicans.png',
+    // 'img': 'pelicans.png',
+    'img': 'pelicans.c64988de.png',
     'primaryColor': '#071F3D',
     'secondaryColor':'#B9975E'
   },
@@ -200,7 +219,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'New York Knicks',
     'simpleName': 'Knicks',
     'location': 'New York',
-    'img': 'knicks.png',
+    // 'img': 'knicks.png',
+    'img': 'knicks.40bcc286.png',
     'primaryColor': '#126BB1',
     'secondaryColor':'#F28235'
   },
@@ -210,7 +230,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Oklahoma City Thunder',
     'simpleName': 'Thunder',
     'location': 'Oklahoma City',
-    'img': 'thunder.png',
+    // 'img': 'thunder.png',
+    'img': 'thunder.63394bba.png',
     'primaryColor': '#137EC1',
     'secondaryColor':'#EE513B'
   },
@@ -220,7 +241,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Orlando Magic',
     'simpleName': 'Magic',
     'location': 'Orlando',
-    'img': 'magic.png',
+    // 'img': 'magic.png',
+    'img': 'magic.6e14f947.png',
     'primaryColor': '#1374BA',
     'secondaryColor':'#0B1F25'
   },
@@ -230,7 +252,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Philadelphia 76ers',
     'simpleName': '76ers',
     'location': 'Philadelphia',
-    'img': '76ers.png',
+    // 'img': '76ers.png',
+    'img': '76ers.1e1a3a03.png',
     'primaryColor': '#0841A2',
     'secondaryColor':'#D30B37'
   },
@@ -240,7 +263,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Phoenix Suns',
     'simpleName': 'Suns',
     'location': 'Phoenix',
-    'img': 'suns.png',
+    // 'img': 'suns.png',
+    'img': 'suns.f430db59.png',
     'primaryColor': '#010101',
     'secondaryColor':'#E46231'
   },
@@ -250,7 +274,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Portland Trail Blazers',
     'simpleName': 'Trail Blazers',
     'location': 'Portland',
-    'img': 'trailblazers.png',
+    // 'img': 'trailblazers.png',
+    'img': 'trailblazers.a9d73afe.png',
     'primaryColor': '#231F20',
     'secondaryColor':'#E03A44'
   },
@@ -260,7 +285,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Sacramento Kings',
     'simpleName': 'Kings',
     'location': 'Sacramento',
-    'img': 'kings.png',
+    // 'img': 'kings.png',
+    'img': 'kings.2c4e47ec.png',
     'primaryColor': '#29251E',
     'secondaryColor':'#6849A6'
   },
@@ -270,7 +296,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'San Antonio Spurs',
     'simpleName': 'Spurs',
     'location': 'San Antonio',
-    'img': 'spurs.png',
+    // 'img': 'spurs.png',
+    'img': 'spurs.098efe08.png',
     'primaryColor': '#040204',
     'secondaryColor':'#C3CED3'
   },
@@ -280,7 +307,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Toronto Raptors',
     'simpleName': 'Raptors',
     'location': 'Toronto',
-    'img': 'raptors.png',
+    // 'img': 'raptors.png',
+    'img': 'raptors.b5dd90bd.png',
     'primaryColor': '#2A2723',
     'secondaryColor':'#BC1537'
   },
@@ -290,7 +318,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Utah Jazz',
     'simpleName': 'Jazz',
     'location': 'Utah',
-    'img': 'jazz.png',
+    // 'img': 'jazz.png',
+    'img': 'jazz.320590ac.png',
     'primaryColor': '#062343',
     'secondaryColor':'#FA9F28'
   },
@@ -300,7 +329,8 @@ angular.module('nbaPlaygroundApp')
     'teamName': 'Washington Wizards',
     'simpleName': 'Wizards',
     'location': 'Washington',
-    'img': 'wizards.png',
+    // 'img': 'wizards.png',
+    'img': 'wizards.11008e85.png',
     'primaryColor': '#032B5B',
     'secondaryColor':'#E21E3C'
   }
