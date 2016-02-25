@@ -39,7 +39,15 @@ a{
   background: {{secondaryColor}};
   color: {{primaryColor}};
 }
+.bar-chart-title-xs{
+  background: {{secondaryColor}};
+  color: {{primaryColor}};
+}
 .bar-chart-title-small{
+  background: {{secondaryColor}};
+  color: {{primaryColor}};
+}
+.bar-chart-title-mediumcol-xs-10 col-xs-offset-1 {
   background: {{secondaryColor}};
   color: {{primaryColor}};
 }
@@ -123,13 +131,13 @@ a{
 
   <div class="tab-menu">
     <div class="row text-center">
-      <div class="col-xs-4 col-md-2 col-md-offset-3 tab-menu-option-left" ng-click="tabIt(tabs[0].id)">
+      <div class="col-xs-2 col-xs-offset-3 tab-menu-option-left" ng-click="tabIt(tabs[0].id)">
         <h3>STATS</h3>
       </div>
-      <div class="col-xs-4 col-md-2 tab-menu-option-middle tab-menu-option-selected" ng-click="tabIt(tabs[1].id)">
+      <div class="col-xs-2 tab-menu-option-middle tab-menu-option-selected" ng-click="tabIt(tabs[1].id)">
         <h3>INFO</h3>
       </div>
-      <div class="col-xs-4 col-md-2 tab-menu-option-right" ng-click="tabIt(tabs[2].id)">
+      <div class="col-xs-2 tab-menu-option-right" ng-click="tabIt(tabs[2].id)">
         <h3>CHARTS</h3>
       </div>
     </div>
@@ -237,7 +245,7 @@ a{
   <div class="player-stats-display text-center" ng-show="tabs[0].active == true">
 
     <div class="row">
-      <div class="col-md-8 col-md-offset-2 player-name text-center">
+      <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 player-name text-center">
         <h1>#{{cpi.jersey}} {{cpi.displayFirstLast | uppercase}}</h1>
       </div>
     </div>
@@ -400,23 +408,23 @@ a{
   <div class="player-charts-display" ng-show="tabs[2].active == true">
 
     <div class="row">
-      <div class="col-md-8 col-md-offset-2 player-name text-center">
+      <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 player-name text-center">
         <h1>#{{cpi.jersey}} {{cpi.displayFirstLast | uppercase}}</h1>
       </div>
     </div>
 
-    <div class="row player-chart visible-md-* visible-lg-* hidden-xs hidden-sm">
-      <div class="col-md-8 col-md-offset-2 bar-chart-border text-center">
-        <h3 class="bar-chart-title last-10">Last 10 Games</h3>
-        <bar-chart class="bar-chart" data="player10" chartid="'last-ten-chart-bars'" chart-title="'.last-10'"></bar-chart>
+    <div class="row player-chart-xs visible-xs-* hidden-sm hidden-md hidden-lg">
+      <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 bar-chart-border text-center">
+        <h3 class="bar-chart-title-xs last-10-xs">Last 10 Games</h3>
+        <bar-chart-xs class="bar-chart-xs" data="player10" chartid="'last-ten-chart-bars-xs'" chart-title="'.last-10-xs'"></bar-chart-xs>
         <select ng-model="selectedStatTen" name="statTen" id="ten-game-stat-select" class="form-control">
           <option ng-repeat="stat in player.stats10" value="{{stat.id}}">{{stat.name}}</option>
         </select>
       </div>
     </div>
 
-    <div class="row player-chart-small visible-xs-* visible-sm-* hidden-md hidden-lg">
-      <div class="col-md-8 col-md-offset-2 bar-chart-border text-center">
+    <div class="row player-chart-small visible-sm-* hidden-xs hidden-md hidden-lg">
+      <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 bar-chart-border text-center">
         <h3 class="bar-chart-title-small last-10-small">Last 10 Games</h3>
         <bar-chart-small class="bar-chart-small" data="player10" chartid="'last-ten-chart-bars-small'" chart-title="'.last-10-small'"></bar-chart-small>
         <select ng-model="selectedStatTen" name="statTen" id="ten-game-stat-select" class="form-control">
@@ -425,8 +433,58 @@ a{
       </div>
     </div>
 
-    <div class="row player-chart visible-md-* visible-lg-* hidden-xs hidden-sm">
-      <div class="col-md-8 col-md-offset-2 bar-chart-border text-center">
+    <div class="row player-chart-medium visible-md hidden-xs hidden-sm hidden-lg">
+      <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 bar-chart-border text-center">
+        <h3 class="bar-chart-title-medium last-10-medium">Last 10 Games</h3>
+        <bar-chart-medium class="bar-chart-medium" data="player10" chartid="'last-ten-chart-bars-medium'" chart-title="'.last-10-medium'"></bar-chart-medium>
+        <select ng-model="selectedStatTen" name="statTen" id="ten-game-stat-select" class="form-control">
+          <option ng-repeat="stat in player.stats10" value="{{stat.id}}">{{stat.name}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row player-chart visible-lg-* hidden-xs hidden-sm hidden-md">
+      <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 bar-chart-border text-center">
+        <h3 class="bar-chart-title last-10">Last 10 Games</h3>
+        <bar-chart class="bar-chart" data="player10" chartid="'last-ten-chart-bars'" chart-title="'.last-10'"></bar-chart>
+        <select ng-model="selectedStatTen" name="statTen" id="ten-game-stat-select" class="form-control">
+          <option ng-repeat="stat in player.stats10" value="{{stat.id}}">{{stat.name}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row player-chart-xs visible-xs-* hidden-sm hidden-md hidden-lg">
+      <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 bar-chart-border text-center">
+        <h3 class="bar-chart-title-xs player-splits-xs">Player Splits</h3>
+        <bar-chart-xs class="bar-chart-xs" data="playerSplits" chartid="'player-splits-chart-bars-xs'" chart-title="'.player-splits-xs'"></bar-chart-xs>
+        <select ng-model="selectedStatSplits" name="statSplits" id="splits-stat-select" class="form-control">
+          <option ng-repeat="stat in player.stats" value="{{stat.id}}">{{stat.name}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row player-chart-small visible-sm-* hidden-xs hidden-md hidden-lg">
+      <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 bar-chart-border text-center">
+        <h3 class="bar-chart-title-small player-splits-small">Player Splits</h3>
+        <bar-chart-small class="bar-chart-small" data="playerSplits" chartid="'player-splits-chart-bars-small'" chart-title="'.player-splits-small'"></bar-chart-small>
+        <select ng-model="selectedStatSplits" name="statSplits" id="splits-stat-select" class="form-control">
+          <option ng-repeat="stat in player.stats" value="{{stat.id}}">{{stat.name}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row player-chart-medium visible-md-* hidden-xs hidden-sm hidden-lg">
+      <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 bar-chart-border text-center">
+        <h3 class="bar-chart-title-medium player-splits-medium">Player Splits</h3>
+        <bar-chart-medium class="bar-chart-medium" data="playerSplits" chartid="'player-splits-chart-bars-medium'" chart-title="'.player-splits-medium'"></bar-chart-medium>
+        <select ng-model="selectedStatSplits" name="statSplits" id="splits-stat-select" class="form-control">
+          <option ng-repeat="stat in player.stats" value="{{stat.id}}">{{stat.name}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row player-chart visible-lg-* hidden-xs hidden-sm hidden-md">
+      <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 bar-chart-border text-center">
         <h3 class="bar-chart-title player-splits">Player Splits</h3>
         <bar-chart class="bar-chart" data="playerSplits" chartid="'player-splits-chart-bars'" chart-title="'.player-splits'"></bar-chart>
         <select ng-model="selectedStatSplits" name="statSplits" id="splits-stat-select" class="form-control">
@@ -435,15 +493,7 @@ a{
       </div>
     </div>
 
-    <div class="row player-chart-small visible-xs-* visible-sm-* hidden-md hidden-lg">
-      <div class="col-md-8 col-md-offset-2 bar-chart-border text-center">
-        <h3 class="bar-chart-title-small player-splits-small">Player Splits</h3>
-        <bar-chart-small class="bar-chart-small" data="playerSplits" chartid="'player-splits-chart-bars-small'" chart-title="'.player-splits-small'"></bar-chart-small>
-        <select ng-model="selectedStatSplits" name="statSplits" id="splits-stat-select" class="form-control">
-          <option ng-repeat="stat in player.stats" value="{{stat.id}}">{{stat.name}}</option>
-        </select>
-      </div>
-    </div>
+
 
   </div>
 

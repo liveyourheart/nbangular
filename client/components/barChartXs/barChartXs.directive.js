@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('nbaPlaygroundApp')
-  .directive('barChartSmall', function() {
-
+  .directive('barChartXs', function () {
     var directiveDefinitionObject = {
 
       restrict: 'E',
@@ -13,7 +12,7 @@ angular.module('nbaPlaygroundApp')
         chartTitle: '=chartTitle'
       },
       link: function(scope, element, attrs) {
-        var w = 450, h = 250;
+        var w = 300, h = 250;
         var xMult = w / scope.data.length;
         console.log(xMult);
         var barWidth = xMult - 2;
@@ -90,7 +89,7 @@ angular.module('nbaPlaygroundApp')
             'font-family': 'Helvetica',
             'font-weight': 'bold',
             'height': 240,
-            'font-size': 12,
+            'font-size': 8,
             'fill': '#fff',
             x: function(d, i) {
               return (i * xMult) + (barWidth / 2);
