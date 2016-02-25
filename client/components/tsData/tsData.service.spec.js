@@ -7,12 +7,12 @@ describe('Service: tsData', function () {
 
   // instantiate service
   var tsData;
-  beforeEach(inject(function (_tsData_) {
-    tsData = _tsData_;
-  }));
-
-  it('should do something', function () {
-    expect(!!tsData).toBe(true);
-  });
+  // beforeEach(inject(function (_tsData_) {
+  //   tsData = _tsData_;
+  // }));
+  //
+  // it('should do something', function () {
+  //   expect(!!tsData).toBe(true);
+  // });
 
 });

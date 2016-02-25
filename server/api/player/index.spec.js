@@ -11,11 +11,8 @@ var playerCtrlStub = {
 };
 
 var routerStub = {
-  get: sinon.spy(),
-  put: sinon.spy(),
-  patch: sinon.spy(),
-  post: sinon.spy(),
-  delete: sinon.spy()
+  get: sinon.spy()
+
 };
 
 // require the index with our stubbed out modules
@@ -34,15 +31,6 @@ describe('Player API Router:', function() {
     playerIndex.should.equal(routerStub);
   });
 
-  describe('GET /api/players', function() {
-
-    it('should route to player.controller.index', function() {
-      routerStub.get
-        .withArgs('/', 'playerCtrl.index')
-        .should.have.been.calledOnce;
-    });
-
-  });
 
   describe('GET /api/players/:id', function() {
 
@@ -54,44 +42,5 @@ describe('Player API Router:', function() {
 
   });
 
-  describe('POST /api/players', function() {
-
-    it('should route to player.controller.create', function() {
-      routerStub.post
-        .withArgs('/', 'playerCtrl.create')
-        .should.have.been.calledOnce;
-    });
-
-  });
-
-  describe('PUT /api/players/:id', function() {
-
-    it('should route to player.controller.update', function() {
-      routerStub.put
-        .withArgs('/:id', 'playerCtrl.update')
-        .should.have.been.calledOnce;
-    });
-
-  });
-
-  describe('PATCH /api/players/:id', function() {
-
-    it('should route to player.controller.update', function() {
-      routerStub.patch
-        .withArgs('/:id', 'playerCtrl.update')
-        .should.have.been.calledOnce;
-    });
-
-  });
-
-  describe('DELETE /api/players/:id', function() {
-
-    it('should route to player.controller.destroy', function() {
-      routerStub.delete
-        .withArgs('/:id', 'playerCtrl.destroy')
-        .should.have.been.calledOnce;
-    });
-
-  });
 
 });

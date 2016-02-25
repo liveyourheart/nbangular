@@ -66,7 +66,6 @@ class MainController {
     $scope.getRoster = function(teamID) {
       $http.get('/api/rosters/' + teamID).then(response =>{
         $scope.coaches = response.data.coaches;
-        console.log($scope.coaches);
         $scope.roster = response.data.commonTeamRoster;
       });
     };
