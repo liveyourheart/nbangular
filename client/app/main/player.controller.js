@@ -52,13 +52,12 @@ class PlayerController {
     $scope.getPlayerStats = function(playerID) {
       $http.get('/api/playerStats/' + playerID).then(response =>{
         $scope.gameLogs = response.data.gameLogs;
-        $scope.leagueAvg = response.data.graphLeagueAvg[0];
-        $scope.playerAvg = response.data.graphPlayerAvg[0];
         $scope.careerAvg = response.data.overviewCareerAvg[0];
         $scope.careerHigh = response.data.overviewCareerHigh[0];
         $scope.careerTotal = response.data.overviewCareerTotal[0];
         $scope.seasonAvg = response.data.overviewSeasonAvg[0];
         $scope.seasonHigh = response.data.overviewSeasonHigh[0];
+        console.log($scope.leagueAvg);
       });
     };
 
