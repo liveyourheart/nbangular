@@ -39,6 +39,10 @@ a{
   background: {{secondaryColor}};
   color: {{primaryColor}};
 }
+.bar-chart-title-small{
+  background: {{secondaryColor}};
+  color: {{primaryColor}};
+}
 .circle-rank{
   color: {{primaryColor}};
   background: {{secondaryColor}};
@@ -110,9 +114,13 @@ a{
         </div>
       </div>
     </div>
-    <select ng-model="selectedTeam" name="teams" id="team-select" class="form-control">
-      <option ng-repeat="team in main.league" value="{{team.teamName}}">{{team.teamName}}</option>
-    </select>
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <select ng-model="selectedTeam" name="teams" id="team-select" class="form-control">
+          <option ng-repeat="team in main.league" value="{{team.teamName}}">{{team.teamName}}</option>
+        </select>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -231,7 +239,7 @@ a{
 
   <div class="team-charts-display" ng-show="tabs[2].active == true">
 
-    <div class="row">
+    <div class="row visible-md-* visible-lg-* hidden-xs hidden-sm">
       <div class="col-md-8 col-md-offset-2 bar-chart-border text-center">
         <h3 class="bar-chart-title team-splits-title">Team Splits</h3>
         <bar-chart class="bar-chart" data="tsData" chartid="'team-splits'" chart-title="'.team-splits-title'"></bar-chart>
@@ -239,14 +247,20 @@ a{
           <option ng-repeat="stat in main.stats" value="{{stat}}">{{stat.name}}</option>
         </select>
       </div>
+    </div>
 
+    <div class="row visible-xs-* visible-sm-* hidden-md hidden-lg">
+      <div class="col-md-8 col-md-offset-2 bar-chart-border text-center">
+        <h3 class="bar-chart-title-small team-splits-title-small">Team Splits</h3>
+        <bar-chart-small class="bar-chart-small" data="tsData" chartid="'team-splits-small'" chart-title="'.team-splits-title-small'"></bar-chart-small>
+        <select ng-model="selectedStat" name="stats" id="stat-select" class="form-control">
+          <option ng-repeat="stat in main.stats" value="{{stat}}">{{stat.name}}</option>
+        </select>
+      </div>
     </div>
 
 
   </div>
 
-
-
-        <!-- <bar-chart chart-data="myData"></bar-chart> -->
 
 </div>
