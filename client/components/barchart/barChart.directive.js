@@ -14,7 +14,7 @@ angular.module('nbaPlaygroundApp')
       },
       link: function(scope, element, attrs) {
 
-        var w = 600, h = 250;
+        var w = 700, h = 250;
         var xMult = w / scope.data.length;
         var barWidth = xMult - 2;
         var justStats = [];
@@ -70,7 +70,7 @@ angular.module('nbaPlaygroundApp')
           .data(scope.data)
           .on('mouseover', function(d){
             d3.select(chartTitleId)
-              .text(d.name);
+              .text(d.name + ' - ' + d.stat);
           })
           .on('mouseout', function(){
             d3.select(chartTitleId)

@@ -138,16 +138,6 @@ svg
   margin-left auto
   margin-right auto
 
-@media screen and (max-width: 500px)
-  .circle-rank
-    height: 150px;
-    width: 150px;
-  .circle-rank-half
-    height: 75px
-    line-height: 75px
-    font-size: 350%
-  .circle-rank-label
-    font-size 350%
 /************************
         COLOR BREAK
 ************************/
@@ -162,11 +152,14 @@ svg
         TAB MENU
 ************************/
 
+
 .tab-menu
   margin-top 30px
 
-  h3
+  h2
     font-weight bold
+    margin-top 2px
+    margin-bottom 2px
 
 .tab-menu-option
   padding 0
@@ -194,7 +187,7 @@ PLAYER PAGE BACK BUTTON
   border-radius $display-border-radius
 
 /************************
-Bar Chart
+        Bar Chart
 ************************/
 
 .bar
@@ -211,7 +204,17 @@ Bar Chart
   padding 5px
   border-radius $display-border-radius
 
+.bar-chart-title-xs
+  margin-top 2px
+  padding 5px
+  border-radius $display-border-radius
+
 .bar-chart-title-small
+  margin-top 2px
+  padding 5px
+  border-radius $display-border-radius
+
+.bar-chart-title-medium
   margin-top 2px
   padding 5px
   border-radius $display-border-radius
@@ -226,9 +229,82 @@ Bar Chart
 .player-chart
   margin-top 20px
 
+.player-chart-xs
+  margin-top 20px
+
+.player-chart-small
+  margin-top 20px
+
+.player-chart-medium
+  margin-top 20px
+
 .player-charts-display
   margin-top 50px
 
 .player-name
   border-radius $display-border-radius
   margin-top: 20px
+
+/************************
+     MEDIA QUERIES
+************************/
+
+@media screen and (max-width: 500px) and (min-width: 401)
+  .circle-rank
+    height: 150px;
+    width: 150px;
+
+  .circle-rank-half
+    height: 75px
+    line-height: 75px
+    font-size: 350%
+
+  .circle-rank-label
+    font-size 350%
+
+  .player
+    font-size 16px
+
+  .team-main-display-header
+    h1
+      font-size 400%
+      font-weight bold
+    h4
+      font-size 200%
+
+  .player-main-display-header
+    h1
+      font-size 400%
+      font-weight bold
+    h4
+      font-size 200%
+
+@media screen and (max-width: 400px)
+  .circle-rank
+    height: 100px;
+    width: 100px;
+
+  .circle-rank-half
+    height: 50px
+    line-height: 50px
+    font-size: 250%
+
+  .circle-rank-label
+    font-size 250%
+
+  .player
+    font-size 12px
+
+  .team-main-display-header
+    h1
+      font-size 300%
+      font-weight bold
+    h4
+      font-size 100%
+
+  .player-main-display-header
+    h1
+      font-size 300%
+      font-weight bold
+    h4
+      font-size 100%

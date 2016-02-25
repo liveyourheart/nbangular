@@ -39,7 +39,15 @@ a{
   background: {{secondaryColor}};
   color: {{primaryColor}};
 }
+.bar-chart-title-xs{
+  background: {{secondaryColor}};
+  color: {{primaryColor}};
+}
 .bar-chart-title-small{
+  background: {{secondaryColor}};
+  color: {{primaryColor}};
+}
+.bar-chart-title-medium{
   background: {{secondaryColor}};
   color: {{primaryColor}};
 }
@@ -134,14 +142,17 @@ a{
 
   <div class="tab-menu">
     <div class="row text-center">
-      <div class="col-xs-4 col-md-2 col-md-offset-3 tab-menu-option-left" ng-click="tabIt(tabs[0].id)">
-        <h3>ROSTER</h3>
+      <div class="col-xs-2 col-xs-offset-3 col-md-2 col-md-offset-3 tab-menu-option-left" ng-click="tabIt(tabs[0].id)">
+        <h2><i class="fa fa-users"></i></h2>
+        <h2 class="hidden-xs">ROSTER</h2>
       </div>
-      <div class="col-xs-4 col-md-2 tab-menu-option-middle tab-menu-option-selected" ng-click="tabIt(tabs[1].id)">
-        <h3>MAIN</h3>
+      <div class="col-xs-2 col-md-2 tab-menu-option-middle tab-menu-option-selected" ng-click="tabIt(tabs[1].id)">
+        <h2><i class="fa fa-info-circle"></i></h2>
+        <h2 class="hidden-xs">INFO</h2>
       </div>
-      <div class="col-xs-4 col-md-2 tab-menu-option-right" ng-click="tabIt(tabs[2].id)">
-        <h3>CHARTS</h3>
+      <div class="col-xs-2 col-md-2 tab-menu-option-right" ng-click="tabIt(tabs[2].id)">
+        <h2><i class="fa fa-bar-chart"></i></h2>
+        <h2 class="hidden-xs">CHARTS</h2>
       </div>
     </div>
   </div>
@@ -249,18 +260,18 @@ a{
 
   <div class="team-charts-display" ng-show="tabs[2].active == true">
 
-    <div class="row visible-md-* visible-lg-* hidden-xs hidden-sm">
-      <div class="col-md-8 col-md-offset-2 bar-chart-border text-center">
-        <h3 class="bar-chart-title team-splits-title">Team Splits</h3>
-        <bar-chart class="bar-chart" data="tsData" chartid="'team-splits'" chart-title="'.team-splits-title'"></bar-chart>
+    <div class="row visible-xs-* hidden-lg hidden-md hidden-sm">
+      <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 bar-chart-border text-center">
+        <h3 class="bar-chart-title-xs team-splits-title-xs">Team Splits</h3>
+        <bar-chart-xs class="bar-chart-xs" data="tsData" chartid="'team-splits-xs'" chart-title="'.team-splits-title-xs'"></bar-chart-xs>
         <select ng-model="selectedStat" name="stats" id="stat-select" class="form-control">
           <option ng-repeat="stat in main.stats" value="{{stat}}">{{stat.name}}</option>
         </select>
       </div>
     </div>
 
-    <div class="row visible-xs-* visible-sm-* hidden-md hidden-lg">
-      <div class="col-md-8 col-md-offset-2 bar-chart-border text-center">
+    <div class="row visible-sm-* hidden-xs hidden-md hidden-lg">
+      <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 bar-chart-border text-center">
         <h3 class="bar-chart-title-small team-splits-title-small">Team Splits</h3>
         <bar-chart-small class="bar-chart-small" data="tsData" chartid="'team-splits-small'" chart-title="'.team-splits-title-small'"></bar-chart-small>
         <select ng-model="selectedStat" name="stats" id="stat-select" class="form-control">
@@ -269,6 +280,25 @@ a{
       </div>
     </div>
 
+    <div class="row visible-md-* hidden-lg hidden-xs hidden-sm">
+      <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 bar-chart-border text-center">
+        <h3 class="bar-chart-title-medium team-splits-title-medium">Team Splits</h3>
+        <bar-chart-medium class="bar-chart-medium" data="tsData" chartid="'team-splits-medium'" chart-title="'.team-splits-title-medium'"></bar-chart-medium>
+        <select ng-model="selectedStat" name="stats" id="stat-select" class="form-control">
+          <option ng-repeat="stat in main.stats" value="{{stat}}">{{stat.name}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row visible-lg-* hidden-md hidden-xs hidden-sm">
+      <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 bar-chart-border text-center">
+        <h3 class="bar-chart-title team-splits-title">Team Splits</h3>
+        <bar-chart class="bar-chart" data="tsData" chartid="'team-splits'" chart-title="'.team-splits-title'"></bar-chart>
+        <select ng-model="selectedStat" name="stats" id="stat-select" class="form-control">
+          <option ng-repeat="stat in main.stats" value="{{stat}}">{{stat.name}}</option>
+        </select>
+      </div>
+    </div>
 
   </div>
 
