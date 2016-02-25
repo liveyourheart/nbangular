@@ -143,16 +143,19 @@ a{
   <div class="tab-menu">
     <div class="row text-center">
       <div class="col-xs-2 col-xs-offset-3 col-md-2 col-md-offset-3 tab-menu-option-left" ng-click="tabIt(tabs[0].id)">
-        <h2><i class="fa fa-users"></i></h2>
+        <h2 class="hidden-xs"><i class="fa fa-users"></i></h2>
         <h2 class="hidden-xs">ROSTER</h2>
+        <h3 class="visible-xs"><i class="fa fa-users"></i></h3>
       </div>
       <div class="col-xs-2 col-md-2 tab-menu-option-middle tab-menu-option-selected" ng-click="tabIt(tabs[1].id)">
-        <h2><i class="fa fa-info-circle"></i></h2>
+        <h2 class="hidden-xs"><i class="fa fa-info-circle"></i></h2>
         <h2 class="hidden-xs">INFO</h2>
+        <h3 class="visible-xs"><i class="fa fa-info-circle"></i></h3>
       </div>
       <div class="col-xs-2 col-md-2 tab-menu-option-right" ng-click="tabIt(tabs[2].id)">
-        <h2><i class="fa fa-bar-chart"></i></h2>
+        <h2 class="hidden-xs"><i class="fa fa-bar-chart"></i></h2>
         <h2 class="hidden-xs">CHARTS</h2>
+        <h3 class="visible-xs"><i class="fa fa-bar-chart"></i></h3>
       </div>
     </div>
   </div>
@@ -226,36 +229,43 @@ a{
   <div class="team-roster-display" ng-show="tabs[0].active == true">
       <h1 class="text-center">Roster:</h1>
       <p class="text-center">Choose a player to for individual stats</p>
-      <div class="table-responsive">
-        <table class="table">
-          <tr>
-            <th>#</th>
-            <th>POS</th>
-            <th>PLAYER</th>
-            <th>HEIGHT</th>
-            <th>WEIGHT</th>
-            <th>AGE</th>
-            <th>SCHOOL</th>
-            <th>EXPERIENCE</th>
-          </tr>
-            <tr class="player" ng-repeat="player in roster | orderBy: 'player.num'" ng-click="goToPlayer(player.playerId)">
-              <td>{{player.num}}</td>
-              <td>{{player.position}}</td>
-              <td>{{player.player}}</td>
-              <td>{{player.height}}</td>
-              <td>{{player.weight}}</td>
-              <td>{{player.age}}</td>
-              <td>{{player.school}}</td>
-              <td>{{player.exp}}</td>
+
+      <div class="container">
+
+        <div class="table-responsive">
+          <table class="table">
+            <tr>
+              <th>#</th>
+              <th>POS</th>
+              <th>PLAYER</th>
+              <th>HEIGHT</th>
+              <th>WEIGHT</th>
+              <th>AGE</th>
+              <th>SCHOOL</th>
+              <th>EXPERIENCE</th>
             </tr>
-        </table>
-      </div>
-      <div class="text-center coaches">
-        <h3>Coaches: </h3>
-        <div class="row">
-          <div class="col-xs-6" ng-repeat="coach in coaches">{{coach.coachName}} - {{coach.coachType}}</div>
+              <tr class="player" ng-repeat="player in roster | orderBy: 'player.num'" ng-click="goToPlayer(player.playerId)">
+                <td>{{player.num}}</td>
+                <td>{{player.position}}</td>
+                <td>{{player.player}}</td>
+                <td>{{player.height}}</td>
+                <td>{{player.weight}}</td>
+                <td>{{player.age}}</td>
+                <td>{{player.school}}</td>
+                <td>{{player.exp}}</td>
+              </tr>
+          </table>
         </div>
+        <div class="text-center coaches">
+          <h3>Coaches: </h3>
+          <div class="row">
+            <div class="col-xs-6" ng-repeat="coach in coaches">{{coach.coachName}} - {{coach.coachType}}</div>
+          </div>
+        </div>
+
       </div>
+
+
   </div>
 
   <div class="team-charts-display" ng-show="tabs[2].active == true">

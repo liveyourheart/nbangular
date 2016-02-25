@@ -12,7 +12,7 @@ angular.module('nbaPlaygroundApp')
         chartTitle: '=chartTitle'
       },
       link: function(scope, element, attrs) {
-        var w = 300, h = 250;
+        var w = 250, h = 150;
         var xMult = w / scope.data.length;
         console.log(xMult);
         var barWidth = xMult - 2;
