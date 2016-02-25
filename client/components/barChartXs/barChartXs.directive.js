@@ -88,13 +88,13 @@ angular.module('nbaPlaygroundApp')
             'text-anchor': 'middle',
             'font-family': 'Helvetica',
             'font-weight': 'bold',
-            'height': 240,
+            'height': 140,
             'font-size': 8,
             'fill': '#fff',
             x: function(d, i) {
               return (i * xMult) + (barWidth / 2);
             },
-            y: 240
+            y: 140
 
           });
 
