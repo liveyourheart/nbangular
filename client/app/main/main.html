@@ -54,8 +54,12 @@ a{
   background: {{secondaryColor}};
 }
 .chart div{
-  background:{{primaryColor}};
-  color: {{secondaryColor}};
+  background:{{secondaryColor}};
+  color: {{primaryColor}};
+}
+.coaches {
+  background:{{secondaryColor}};
+  color: {{primaryColor}};
 }
 .nba-title{
   background: {{primaryColor}};
@@ -94,8 +98,8 @@ a{
 }
 </style>
 
-<div class="nba-title color-break text-center">
-  <h1>NBAngular</h1>
+<div class="color-break text-center">
+  <h1 class="nba-title">NBAngular</h1>
 </div>
 
 <header class="hero-unit" id="banner">
@@ -148,13 +152,13 @@ a{
         <div class="col-lg-12">
           <div class="team-main-display-header">
             <h1 class="text-center">{{selectedTeam | uppercase}}</h1>
-            <h2 class="text-center">({{teamInfo.w}} - {{teamInfo.l}})</h2>
+            <h1 class="text-center">({{teamInfo.w}} - {{teamInfo.l}})</h1>
             <div class="row">
-              <div class="col-xs-6 text-center">
+              <div class="col-xs-4 col-xs-offset-2 text-center">
                 <h1>#{{teamInfo.confRank}}</h1>
                 <h3>in the {{teamInfo.teamConference}}</h4>
               </div>
-              <div class="col-xs-6 text-center">
+              <div class="col-xs-4 text-center">
                 <h1>#{{teamInfo.divRank}}</h1>
                 <h3 class="text-center">in the {{teamInfo.teamDivision}} Division</h4>
               </div>
@@ -234,6 +238,12 @@ a{
               <td>{{player.exp}}</td>
             </tr>
         </table>
+      </div>
+      <div class="text-center coaches">
+        <h3>Coaches: </h3>
+        <div class="row">
+          <div class="col-xs-6" ng-repeat="coach in coaches">{{coach.coachName}} - {{coach.coachType}}</div>
+        </div>
       </div>
   </div>
 
