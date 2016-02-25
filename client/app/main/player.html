@@ -39,6 +39,10 @@ a{
   background: {{secondaryColor}};
   color: {{primaryColor}};
 }
+.bar-chart-title-small{
+  background: {{secondaryColor}};
+  color: {{primaryColor}};
+}
 .circle-rank{
   color: {{primaryColor}};
   background: {{secondaryColor}};
@@ -401,9 +405,8 @@ a{
       </div>
     </div>
 
-    <div class="row player-chart">
+    <div class="row player-chart visible-md-* visible-lg-* hidden-xs hidden-sm">
       <div class="col-md-8 col-md-offset-2 bar-chart-border text-center">
-
         <h3 class="bar-chart-title last-10">Last 10 Games</h3>
         <bar-chart class="bar-chart" data="player10" chartid="'last-ten-chart-bars'" chart-title="'.last-10'"></bar-chart>
         <select ng-model="selectedStatTen" name="statTen" id="ten-game-stat-select" class="form-control">
@@ -412,10 +415,30 @@ a{
       </div>
     </div>
 
-    <div class="row player-chart">
+    <div class="row player-chart-small visible-xs-* visible-sm-* hidden-md hidden-lg">
+      <div class="col-md-8 col-md-offset-2 bar-chart-border text-center">
+        <h3 class="bar-chart-title-small last-10-small">Last 10 Games</h3>
+        <bar-chart-small class="bar-chart-small" data="player10" chartid="'last-ten-chart-bars-small'" chart-title="'.last-10-small'"></bar-chart-small>
+        <select ng-model="selectedStatTen" name="statTen" id="ten-game-stat-select" class="form-control">
+          <option ng-repeat="stat in player.stats10" value="{{stat.id}}">{{stat.name}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row player-chart visible-md-* visible-lg-* hidden-xs hidden-sm">
       <div class="col-md-8 col-md-offset-2 bar-chart-border text-center">
         <h3 class="bar-chart-title player-splits">Player Splits</h3>
         <bar-chart class="bar-chart" data="playerSplits" chartid="'player-splits-chart-bars'" chart-title="'.player-splits'"></bar-chart>
+        <select ng-model="selectedStatSplits" name="statSplits" id="splits-stat-select" class="form-control">
+          <option ng-repeat="stat in player.stats" value="{{stat.id}}">{{stat.name}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row player-chart-small visible-xs-* visible-sm-* hidden-md hidden-lg">
+      <div class="col-md-8 col-md-offset-2 bar-chart-border text-center">
+        <h3 class="bar-chart-title-small player-splits-small">Player Splits</h3>
+        <bar-chart-small class="bar-chart-small" data="playerSplits" chartid="'player-splits-chart-bars-small'" chart-title="'.player-splits-small'"></bar-chart-small>
         <select ng-model="selectedStatSplits" name="statSplits" id="splits-stat-select" class="form-control">
           <option ng-repeat="stat in player.stats" value="{{stat.id}}">{{stat.name}}</option>
         </select>

@@ -114,9 +114,13 @@ a{
         </div>
       </div>
     </div>
-    <select ng-model="selectedTeam" name="teams" id="team-select" class="form-control">
-      <option ng-repeat="team in main.league" value="{{team.teamName}}">{{team.teamName}}</option>
-    </select>
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <select ng-model="selectedTeam" name="teams" id="team-select" class="form-control">
+          <option ng-repeat="team in main.league" value="{{team.teamName}}">{{team.teamName}}</option>
+        </select>
+      </div>
+    </div>
   </div>
 </header>
 
