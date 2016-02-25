@@ -119,7 +119,7 @@ angular.module('nbaPlaygroundApp')
               })
               .attr('y', function(d) {
                 return h - 10 - yScale(d.stat);
-              })
+              });
 
 
             d3.selectAll('.'+textId)
