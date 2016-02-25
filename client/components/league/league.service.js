@@ -243,8 +243,8 @@ angular.module('nbaPlaygroundApp')
     'location': 'Orlando',
     // 'img': 'magic.png',
     'img': 'magic.6e14f947.png',
-    'primaryColor': '#1374BA',
-    'secondaryColor':'#0B1F25'
+    'primaryColor': '#0B1F25',
+    'secondaryColor':'#1374BA'
   },
   {
     'teamId': 1610612755,
