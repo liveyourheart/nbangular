@@ -40,7 +40,6 @@ class PlayerController {
 
     $scope.$watch('selectedStatTen', function(newVal){
       if(newVal){
-        console.log(newVal);
         $scope.getPlayerTenData(newVal);
       }
     });

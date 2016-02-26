@@ -80,7 +80,6 @@ angular.module('nbaPlaygroundApp')
           .enter()
           .append('text')
           .text(function(d) {
-            console.log(d.stat)
             return d.stat;
           })
           .attr({

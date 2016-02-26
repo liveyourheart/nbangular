@@ -275,7 +275,7 @@ a{
         <h3 class="bar-chart-title-xs team-splits-title-xs">Team Splits</h3>
         <bar-chart-xs class="bar-chart-xs" data="tsData" chartid="'team-splits-xs'" chart-title="'.team-splits-title-xs'"></bar-chart-xs>
         <select ng-model="selectedStat" name="stats" id="stat-select" class="form-control">
-          <option ng-repeat="stat in main.stats" value="{{stat}}">{{stat.name}}</option>
+          <option ng-repeat="stat in main.stats" value="{{stat.id}}">{{stat.name}}</option>
         </select>
       </div>
     </div>
@@ -285,7 +285,7 @@ a{
         <h3 class="bar-chart-title-small team-splits-title-small">Team Splits</h3>
         <bar-chart-small class="bar-chart-small" data="tsData" chartid="'team-splits-small'" chart-title="'.team-splits-title-small'"></bar-chart-small>
         <select ng-model="selectedStat" name="stats" id="stat-select" class="form-control">
-          <option ng-repeat="stat in main.stats" value="{{stat}}">{{stat.name}}</option>
+          <option ng-repeat="stat in main.stats" value="{{stat.id}}">{{stat.name}}</option>
         </select>
       </div>
     </div>
@@ -295,7 +295,7 @@ a{
         <h3 class="bar-chart-title-medium team-splits-title-medium">Team Splits</h3>
         <bar-chart-medium class="bar-chart-medium" data="tsData" chartid="'team-splits-medium'" chart-title="'.team-splits-title-medium'"></bar-chart-medium>
         <select ng-model="selectedStat" name="stats" id="stat-select" class="form-control">
-          <option ng-repeat="stat in main.stats" value="{{stat}}">{{stat.name}}</option>
+          <option ng-repeat="stat in main.stats" value="{{stat.id}}">{{stat.name}}</option>
         </select>
       </div>
     </div>
