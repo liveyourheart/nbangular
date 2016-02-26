@@ -305,7 +305,7 @@ a{
         <h3 class="bar-chart-title team-splits-title">Team Splits</h3>
         <bar-chart class="bar-chart" data="tsData" chartid="'team-splits'" chart-title="'.team-splits-title'"></bar-chart>
         <select ng-model="selectedStat" name="stats" id="stat-select" class="form-control">
-          <option ng-repeat="stat in main.stats" value="{{stat}}">{{stat.name}}</option>
+          <option ng-repeat="stat in main.stats" value="{{stat.id}}">{{stat.name}}</option>
         </select>
       </div>
     </div>

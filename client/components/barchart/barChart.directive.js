@@ -28,19 +28,20 @@ angular.module('nbaPlaygroundApp')
           justStats.push(scope.data[i].stat);
         }
 
-
         scope.$watch('data', function(newVal, oldVal){
-          justStats = [];
-          for(var i = 0; i < scope.data.length; i++){
-            justStats.push(scope.data[i].stat);
+          if(newVal != null){
+            justStats = [];
+            for(var i = 0; i < scope.data.length; i++){
+              justStats.push(scope.data[i].stat);
+            }
+
           }
           update();
-
         });
 
         var yScale = d3.scale.linear()
-          .domain([d3.max(justStats)], 0)
-          .range([h, 0]);
+          .domain([0, d3.max(justStats)])
+          .range([0, h]);
 
 
         var svg = d3.select(element[0]).append('svg');
@@ -52,14 +53,13 @@ angular.module('nbaPlaygroundApp')
           .data(scope.data)
           .enter()
           .append('rect')
-          .transition().ease('elastic')
-          .attr('class', 'bar '+chartId)
           .attr('x', function(d, i) {
             return i * xMult;
           })
           .attr('y', function(d) {
-            return yScale(d.stat);
+            return h - 10 - yScale(d.stat);
           })
+          .attr('class', 'bar '+chartId)
           .attr('width', barWidth)
           .attr('fill', '#000')
           .style('height', function(d) {
@@ -99,16 +99,11 @@ angular.module('nbaPlaygroundApp')
           });
 
           function update(){
-            for(var i = 0; i < scope.data.length; i++){
-              justStats.push(scope.data[i].stat);
-            }
-
             yScale = d3.scale.linear()
               .domain([0, d3.max(justStats)])
               .range([0, h]);
 
             var rect = d3.selectAll('rect');
-            console.log(chartId);
             d3.selectAll('.' +chartId)
               .data(scope.data)
               .style('height', function(d) {

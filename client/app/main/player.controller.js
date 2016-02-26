@@ -11,6 +11,8 @@ class PlayerController {
     this.league = league;
     this.stats = playerSplitsStats;
     this.stats10 = playerTenStats;
+    $scope.stats = this.stats;
+    $scope.stats10 = this.stats10;
     $scope.league = league;
     $scope.teamImage = undefined;
     $scope.primaryColor = undefined;
@@ -32,8 +34,8 @@ class PlayerController {
     $scope.tabs = playerTabs;
     $scope.playerSplits = playerSplits;
     $scope.player10 = playerTenData;
-    $scope.selectedStatSplits = this.stats[1];
-    $scope.selectedStatTen = this.stats10[1];
+    $scope.selectedStatSplits = this.stats[0].id;
+    $scope.selectedStatTen = this.stats10[0].id;
 
 
     $scope.$watch('selectedStatSplits', function(newVal){
@@ -57,7 +59,7 @@ class PlayerController {
         $scope.careerTotal = response.data.overviewCareerTotal[0];
         $scope.seasonAvg = response.data.overviewSeasonAvg[0];
         $scope.seasonHigh = response.data.overviewSeasonHigh[0];
-        console.log($scope.leagueAvg);
+
       });
     };
 
@@ -158,7 +160,6 @@ class PlayerController {
     $scope.getPlayerStats($scope.playerId);
     $scope.getPlayerInfo($scope.playerId);
     $scope.initTabs();
-
   }
 
   }

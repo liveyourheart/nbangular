@@ -9,14 +9,14 @@ class MainController {
     this.awesomeThings = [];
     this.league = league;
     this.stats = stats;
-    $scope.selectedStat = this.stats[1];
+    $scope.selectedStat = this.stats[0].id;
     $scope.selectedTeam = 'Pick a Team';
     $scope.selectedTeamId = -1;
     $scope.league = league;
     $scope.teamImage = 'nbangular.c83fa3b7.png';
     $scope.primaryColor = '#797979';
     $scope.secondaryColor = '#fff';
-    $scope.teamID = 0;
+    $scope.teamID = 1610612760;
     $scope.roster = undefined;
     $scope.coaches = undefined;
     $scope.teamStats = undefined;
@@ -27,7 +27,7 @@ class MainController {
 
     //watches select of teams and updates info
     $scope.$watch('selectedTeam', function(newVal, oldVal){
-      if(newVal !== oldVal){
+      if(newVal && newVal != 'Pick a Team'){
 
         for(var i = 0; i < $scope.league.length; i++){
           if($scope.league[i].teamName === newVal){
@@ -38,23 +38,23 @@ class MainController {
         $scope.primaryColor = $scope.league[$scope.selectedTeamId].primaryColor;
         $scope.secondaryColor = $scope.league[$scope.selectedTeamId].secondaryColor;
         $scope.teamID = $scope.league[$scope.selectedTeamId].teamId;
+
         $scope.getRoster($scope.teamID);
         $scope.getTeamStats($scope.teamID);
         $scope.getTeamDashboard($scope.teamID);
-
       }
     });
 
     $scope.$watch('selectedStat', function(newVal){
       if(newVal){
-        var statid = JSON.parse(newVal).id;
-        $scope.getTeamSplitsData(statid);
+        $scope.getTeamSplitsData(newVal);
       }
 
 
     });
 
-    $scope.$watch('myData', function(newVal, oldVal){
+    $scope.$watch('teamDashboard', function(newVal, oldVal){
+      $scope.getTeamSplitsData($scope.selectedStat);
     });
 
     $scope.getTeamDashboard = function(teamID){
@@ -106,7 +106,10 @@ class MainController {
     $scope.getTeamSplitsData = function(statId){
       var stat = statId;
       $scope.tsData = [];
-      if(!$scope.teamDashboard){return;}
+      if($scope.teamDashboard == undefined){
+        $scope.tsData = tsData;
+        return;
+      }
       var oa = $scope.teamDashboard.overallTeamDashboard[0][stat];
       var w = $scope.teamDashboard.winsLossesTeamDashboard[0][stat];
       var l = $scope.teamDashboard.winsLossesTeamDashboard[1][stat];
@@ -121,72 +124,60 @@ class MainController {
       var day1 = $scope.teamDashboard.daysRestTeamDashboard[1][stat];
       var day2 = $scope.teamDashboard.daysRestTeamDashboard[2][stat];
 
-      var overall = {
+      $scope.tsData = [
+      {
         name: 'Overall',
         stat: oa
-      };
-      var wins = {
+      },
+      {
         name: 'In Wins',
         stat: w
-      };
-      var losses = {
+      },
+      {
         name: 'In Losses',
         stat: l
-      };
-      var home = {
+      },
+      {
         name: 'At Home',
         stat: h
-      };
-      var away = {
+      },
+      {
         name: 'On The Road',
         stat: a
-      };
-      var  october = {
+      },
+      {
         name: 'In October',
         stat: oct
-      };
-      var november = {
+      },
+      {
         name: 'In November',
         stat: nov
-      };
-      var december = {
+      },
+      {
         name: 'In December',
         stat: dec
-      };
-      var january = {
+      },
+      {
         name: 'In January',
         stat: jan
-      };
-      var february = {
+      },
+      {
         name: 'In February',
         stat: feb
-      };
-      var back2back = {
+      },
+      {
         name: 'In Back To Backs',
         stat: b2b
-      };
-      var dayRest1 = {
+      },
+      {
         name: 'On One Day Rest',
         stat: day1
-      };
-      var dayRest2= {
+      },
+      {
         name: 'On Two Days Rest',
         stat: day2
-      };
-      $scope.tsData.push(overall);
-      $scope.tsData.push(wins);
-      $scope.tsData.push(losses);
-      $scope.tsData.push(home);
-      $scope.tsData.push(away);
-      $scope.tsData.push(october);
-      $scope.tsData.push(november);
-      $scope.tsData.push(december);
-      $scope.tsData.push(january);
-      $scope.tsData.push(february);
-      $scope.tsData.push(back2back);
-      $scope.tsData.push(dayRest1);
-      $scope.tsData.push(dayRest2);
-
+      }
+    ];
     };
 
     $scope.updateData = function(){

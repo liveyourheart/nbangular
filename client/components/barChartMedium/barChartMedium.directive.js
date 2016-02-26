@@ -14,7 +14,6 @@ angular.module('nbaPlaygroundApp')
       link: function(scope, element, attrs) {
         var w = 550, h = 250;
         var xMult = w / scope.data.length;
-        console.log(xMult);
         var barWidth = xMult - 2;
         var justStats = [];
         var chartId = scope.chartid;
@@ -27,19 +26,20 @@ angular.module('nbaPlaygroundApp')
           justStats.push(scope.data[i].stat);
         }
 
-
         scope.$watch('data', function(newVal, oldVal){
-          justStats = [];
-          for(var i = 0; i < scope.data.length; i++){
-            justStats.push(scope.data[i].stat);
+          if(newVal != null){
+            justStats = [];
+            for(var i = 0; i < scope.data.length; i++){
+              justStats.push(scope.data[i].stat);
+            }
+
           }
           update();
-
         });
 
         var yScale = d3.scale.linear()
-          .domain([d3.max(justStats)], 0)
-          .range([h, 0]);
+          .domain([0, d3.max(justStats)])
+          .range([0, h]);
 
 
         var svg = d3.select(element[0]).append('svg');
@@ -51,14 +51,13 @@ angular.module('nbaPlaygroundApp')
           .data(scope.data)
           .enter()
           .append('rect')
-          .transition().ease('elastic')
-          .attr('class', 'bar '+chartId)
           .attr('x', function(d, i) {
             return i * xMult;
           })
           .attr('y', function(d) {
-            return yScale(d.stat);
+            return h - 10 - yScale(d.stat);
           })
+          .attr('class', 'bar '+chartId)
           .attr('width', barWidth)
           .attr('fill', '#000')
           .style('height', function(d) {
@@ -89,26 +88,20 @@ angular.module('nbaPlaygroundApp')
             'font-family': 'Helvetica',
             'font-weight': 'bold',
             'height': 240,
-            'font-size': 16,
-            'fill': '#fff',
             x: function(d, i) {
               return (i * xMult) + (barWidth / 2);
             },
-            y: 240
-
+            y: 240,
+            'font-size': 14,
+            'fill': '#fff'
           });
 
           function update(){
-            for(var i = 0; i < scope.data.length; i++){
-              justStats.push(scope.data[i].stat);
-            }
-
             yScale = d3.scale.linear()
               .domain([0, d3.max(justStats)])
               .range([0, h]);
 
             var rect = d3.selectAll('rect');
-            console.log(chartId);
             d3.selectAll('.' +chartId)
               .data(scope.data)
               .style('height', function(d) {
