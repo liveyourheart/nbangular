@@ -6,19 +6,19 @@ angular.module('nbaPlaygroundApp')
     var ps = [
       {
         name: 'Season Average',
-        stat: 0
+        stat: 1
       },
       {
         name: 'Career Average',
-        stat: 0
+        stat: 1
       },
       {
         name: 'Season High',
-        stat: 0
+        stat: 1
       },
       {
         name: 'CareerHigh',
-        stat: 0
+        stat: 1
       },
     ];
     return ps;

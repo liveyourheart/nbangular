@@ -427,7 +427,7 @@ a{
       <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 bar-chart-border text-center">
         <h3 class="bar-chart-title-xs last-10-xs">Last 10 Games</h3>
         <bar-chart-xs class="bar-chart-xs" data="player10" chartid="'last-ten-chart-bars-xs'" chart-title="'.last-10-xs'"></bar-chart-xs>
-        <select ng-init="selectedStatTen = player.stats10[0].id" ng-model="selectedStatTen" name="statTen" id="ten-game-stat-select" class="form-control">
+        <select ng-model="selectedStatTen" name="statTen" id="ten-game-stat-select" class="form-control">
           <option ng-repeat="stat in player.stats10" value="{{stat.id}}">{{stat.name}}</option>
         </select>
       </div>

@@ -6,43 +6,43 @@ angular.module('nbaPlaygroundApp')
     var stats = [
       {
         name: 'Choose a Stat',
-        stat: 0
+        stat: 1
       },
       {
         name: 'Choose a Stat',
-        stat: 0
+        stat: 1
       },
       {
         name: 'Choose a Stat',
-        stat: 0
+        stat: 1
       },
       {
         name: 'Choose a Stat',
-        stat: 0
+        stat: 1
       },
       {
         name: 'Choose a Stat',
-        stat: 0
+        stat: 1
       },
       {
         name: 'Choose a Stat',
-        stat: 0
+        stat: 1
       },
       {
         name: 'Choose a Stat',
-        stat: 0
+        stat: 1
       },
       {
         name: 'Choose a Stat',
-        stat: 0
+        stat: 1
       },
       {
         name: 'Choose a Stat',
-        stat: 0
+        stat: 1
       },
       {
         name: 'Choose a Stat',
-        stat: 0
+        stat: 1
       }
     ];
     return stats;

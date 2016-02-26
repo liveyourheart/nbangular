@@ -38,15 +38,28 @@ class PlayerController {
     $scope.selectedStatTen = this.stats10[0].id;
 
 
-    $scope.$watch('selectedStatSplits', function(newVal){
+    $scope.$watch('selectedStatTen', function(newVal){
       if(newVal){
+        console.log(newVal);
+        $scope.getPlayerTenData(newVal);
+      }
+    });
+
+    $scope.$watch('selectedStatSplits', function(newVal){
+      if(newVal && $scope.seasonAvg !== undefined){
         $scope.getPlayerSplitsData(newVal);
       }
     });
 
-    $scope.$watch('selectedStatTen', function(newVal){
+    $scope.$watch('seasonHigh', function(newVal){
       if(newVal){
-        $scope.getPlayerTenData(newVal);
+        $scope.getPlayerSplitsData($scope.selectedStatSplits);
+      }
+    });
+
+    $scope.$watch('gameLogs', function(newVal){
+      if(newVal){
+        $scope.getPlayerTenData($scope.selectedStatTen);
       }
     });
 
@@ -107,27 +120,25 @@ class PlayerController {
       var seasonHigh = $scope.seasonHigh[stat];
       var careerHigh = $scope.careerHigh[stat];
 
-      var sa = {
-        name: 'Season Average',
-        stat: seasonAvg
-      };
-      var ca = {
-        name: 'Career Average',
-        stat: careerAvg
-      };
-      var sh = {
-        name: 'Season High',
-        stat: seasonHigh
-      };
-      var ch = {
-        name: 'Career High Average',
-        stat: careerHigh
-      };
-      $scope.playerSplits.push(sa);
-      $scope.playerSplits.push(ca);
-      $scope.playerSplits.push(sh);
-      $scope.playerSplits.push(ch);
+      $scope.playerSplits = [
+        {
+          name: 'Season Average',
+          stat: seasonAvg
+        },
+        {
+          name: 'Career Average',
+          stat: careerAvg
+        },
+        {
+          name: 'Season High',
+          stat: seasonHigh
+        },
+        {
+          name: 'Career High Average',
+          stat: careerHigh
+        }
 
+      ];
     };
 
     $scope.initTabs = function(){

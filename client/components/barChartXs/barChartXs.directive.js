@@ -21,7 +21,6 @@ angular.module('nbaPlaygroundApp')
         var chartTitleId = scope.chartTitle;
         var chartTitle = d3.select(chartTitleId).text();
 
-
         for(var i = 0; i < scope.data.length; i++){
           justStats.push(scope.data[i].stat);
         }
@@ -32,7 +31,6 @@ angular.module('nbaPlaygroundApp')
             for(var i = 0; i < scope.data.length; i++){
               justStats.push(scope.data[i].stat);
             }
-
           }
           update();
         });
@@ -41,12 +39,10 @@ angular.module('nbaPlaygroundApp')
           .domain([0, d3.max(justStats)])
           .range([0, h]);
 
-
         var svg = d3.select(element[0]).append('svg');
 
         svg.attr('width', w);
         svg.attr('height', h);
-
         svg.selectAll('rect')
           .data(scope.data)
           .enter()
@@ -63,23 +59,27 @@ angular.module('nbaPlaygroundApp')
           .style('height', function(d) {
             return h - yScale(d) + 5;
           });
-
         svg.selectAll('rect')
           .data(scope.data)
           .on('mouseover', function(d){
+            var stat;
+            if(!isInt(d.stat)){
+              stat = d.stat.toFixed(2);
+            }
+            else stat = d.stat;
             d3.select(chartTitleId)
-              .text(d.name + ' - ' + d.stat);
+              .text(d.name + ' - ' + stat);
           })
           .on('mouseout', function(){
             d3.select(chartTitleId)
               .text(chartTitle);
           });
-
         svg.selectAll('text')
           .data(scope.data)
           .enter()
           .append('text')
           .text(function(d) {
+            console.log(d.stat)
             return d.stat;
           })
           .attr({
@@ -87,7 +87,7 @@ angular.module('nbaPlaygroundApp')
             'text-anchor': 'middle',
             'font-family': 'Helvetica',
             'font-weight': 'bold',
-            'height': 240,
+            'height': 140,
             x: function(d, i) {
               return (i * xMult) + (barWidth / 2);
             },
@@ -114,12 +114,17 @@ angular.module('nbaPlaygroundApp')
                 return h - 10 - yScale(d.stat);
               });
 
-
             d3.selectAll('.'+textId)
               .data(scope.data)
               .text(function(d){
-                return d.stat;
+                if(!isInt(d.stat)){
+                  return d.stat.toFixed(2);
+                } else return d.stat;
               });
+          }
+
+          function isInt(n){
+            return n % 1 === 0;
           }
       }
     };
