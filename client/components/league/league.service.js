@@ -101,7 +101,7 @@ angular.module('nbaPlaygroundApp')
     // 'img': 'pistons.png',
     'img': 'pistons.9cfb5a31.png',
     'primaryColor': '#0F6DB5',
-    'secondaryColor':'#EA1D4F'
+    'secondaryColor':'#fff'
   },
   {
     'teamId': 1610612744,
@@ -144,8 +144,8 @@ angular.module('nbaPlaygroundApp')
     'location': 'Los Angeles',
     // 'img': 'clippers.png',
     'img': 'clippers.00b36656.png',
-    'primaryColor': '#0949AB',
-    'secondaryColor':'#D5123F'
+    'primaryColor': '#D5123F',
+    'secondaryColor':'#fff'
   },
   {
     'teamId': 1610612747,
