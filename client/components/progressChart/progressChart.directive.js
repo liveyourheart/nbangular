@@ -108,7 +108,6 @@ angular.module('nbaPlaygroundApp')
             fill: color[0],
           });
 
-
         var pathForeground = svg.append('path')
           .datum({
             endAngle: 0
@@ -120,7 +119,6 @@ angular.module('nbaPlaygroundApp')
           .style({
             fill: color[1],
           });
-
 
         var middleCount = svg.append('text')
           .datum(0)
