@@ -82,6 +82,21 @@ a{
   background: {{secondaryColor}};
   color: {{primaryColor}};
 }
+.progress-chart-background{
+  fill: {{primaryColor}} !important;
+}
+.progress-chart-bar{
+  fill: {{secondaryColor}} !important;
+}
+.progress-chart-container{
+  background: {{secondaryColor}};
+}
+.progress-chart-label{
+  color: {{primaryColor}};
+}
+.progress-chart-text{
+  fill: {{secondaryColor}} !important;
+}
 .team-charts-display{
   margin-top: 50px;
 }
@@ -310,7 +325,37 @@ a{
       </div>
     </div>
 
-  </div>
+    <div class="row progress-chart-container text-center">
 
+        <div class="col-md-3 col-xs-6">
+          <h2 class="progress-chart-label">WIN%</h2>
+          <progress-chart data="testData" pc="primaryColor" sc="secondaryColor"></progress-chart>
+        </div>
+
+        <div class="col-md-3 col-xs-6">
+          <h2 class="progress-chart-label">FG%</h2>
+          <progress-chart data="testData" pc="primaryColor" sc="secondaryColor"></progress-chart>
+        </div>
+
+        <div class="col-md-3 col-xs-6">
+          <h2 class="progress-chart-label">3PT%</h2>
+          <progress-chart data="testData" pc="primaryColor" sc="secondaryColor"></progress-chart>
+        </div>
+
+        <div class="col-md-3 col-xs-6">
+          <h2 class="progress-chart-label">FT%</h2>
+          <progress-chart data="testData" pc="primaryColor" sc="secondaryColor"></progress-chart>
+        </div>
+
+        <div class="col-xs-6 col-xs-offset-3">
+          <select ng-model="selectedStat" name="stats" id="stat-select" class="form-control">
+            <option ng-repeat="stat in main.stats" value="{{stat.id}}">{{stat.name}}</option>
+          </select>
+        </div>
+
+
+    </div>
+
+  </div>
 
 </div>

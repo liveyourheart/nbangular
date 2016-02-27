@@ -24,6 +24,7 @@ class MainController {
     $scope.teamDashboard = undefined;
     $scope.tsData = tsData;
     $scope.tabs = teamTabs;
+    $scope.testData = 0.32;
 
     //watches select of teams and updates info
     $scope.$watch('selectedTeam', function(newVal, oldVal){
