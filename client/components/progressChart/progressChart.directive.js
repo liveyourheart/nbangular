@@ -71,11 +71,6 @@ angular.module('nbaPlaygroundApp')
         //background, arc, text color order
         var color = [sc, pc, pc];
 
-        scope.$watch('primaryColor', function(){
-          animate();
-          setTimeout(animate,0);
-        });
-
         scope.$watch('data', function(newVal){
           percent = newVal * 100;
           animate();
@@ -104,47 +99,6 @@ angular.module('nbaPlaygroundApp')
             transform: 'translate(' + w / 2 + ',' + h / 2 + ')'
           });
 
-        var defs = svg.append('svg:defs');
-
-        var inset_shadow = defs.append('svg:filter')
-          .attr('id', 'inset-shadow');
-
-        inset_shadow.append('svg:feOffset')
-          .attr({
-            dx: 0,
-            dy: 0
-          });
-
-        inset_shadow.append('svg:feComposite')
-          .attr({
-            operator: 'out',
-            in : 'SourceGraphic',
-            in2: 'offset-blur',
-            result: 'inverse'
-          });
-
-        inset_shadow.append('svg:feFlood')
-          .attr({
-            'flood-color': 'black',
-            'flood-opacity': .7,
-            result: 'color'
-          });
-
-        inset_shadow.append('svg:feComposite')
-          .attr({
-            operator: 'in',
-            in : 'color',
-            in2: 'inverse',
-            result: 'shadow'
-          });
-
-        inset_shadow.append('svg:feComposite')
-          .attr({
-            operator: 'over',
-            in : 'shadow',
-            in2: 'SourceGraphic'
-          });
-
         var path = svg.append('path')
           .attr({
             d: arc,
@@ -152,7 +106,6 @@ angular.module('nbaPlaygroundApp')
           })
           .style({
             fill: color[0],
-            filter: 'url(#inset-shadow)'
           });
 
 
@@ -166,7 +119,6 @@ angular.module('nbaPlaygroundApp')
           })
           .style({
             fill: color[1],
-            filter: 'url(#inset-shadow)'
           });
 
 
@@ -185,7 +137,6 @@ angular.module('nbaPlaygroundApp')
             fill: d3.rgb(color[2]),
             'font-size': fontSize,
             'font-weight': 'bold',
-            // filter: 'url(#inset-shadow)'
           });
 
         var oldValue = 0;
@@ -212,7 +163,7 @@ angular.module('nbaPlaygroundApp')
         var animate = function() {
 
           pathForeground.transition()
-            .duration(750)
+            .duration(500)
             .ease('cubic')
             .call(arcTween, percent, oldValue);
           oldValue = percent;
