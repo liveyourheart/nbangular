@@ -5,56 +5,58 @@ angular.module('nbaPlaygroundApp')
     // AngularJS will instantiate a singleton by calling "new" on this function
     var tsData = [
       {
-        name: 'Choose a Stat',
+        name: 'Overall',
         stat: 1
       },
       {
-        name: 'Choose a Stat',
+        name: 'In Wins',
         stat: 1
       },
       {
-        name: 'Choose a Stat',
+        name: 'In Losses',
         stat: 1
       },
       {
-        name: 'Choose a Stat',
+        name: 'At Home',
         stat: 1
       },
       {
-        name: 'Choose a Stat',
+        name: 'On The Road',
         stat: 1
       },
       {
-        name: 'Choose a Stat',
+        name: 'In October',
         stat: 1
       },
       {
-        name: 'Choose a Stat',
+        name: 'In November',
         stat: 1
       },
       {
-        name: 'Choose a Stat',
+        name: 'In December',
         stat: 1
       },
       {
-        name: 'Choose a Stat',
+        name: 'In January',
         stat: 1
       },
       {
-        name: 'Choose a Stat',
+        name: 'In February',
         stat: 1
       },
       {
-        name: 'Choose a Stat',
+        name: 'In Back To Backs',
         stat: 1
       },
       {
-        name: 'Choose a Stat',
+        name: 'On One Day Rest',
         stat: 1
+
       },
       {
-        name: 'Choose a Stat',
+        name: 'On Two Days Rest',
         stat: 1
+
       }
     ];
 

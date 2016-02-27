@@ -4,7 +4,7 @@
 
 class MainController {
 
-  constructor($http, league, stats, tsData, teamTabs, $scope, $location) {
+  constructor($http, $timeout, league, stats, tsData, teamTabs, $scope, $location) {
     this.$http = $http;
     this.awesomeThings = [];
     this.league = league;
@@ -24,7 +24,16 @@ class MainController {
     $scope.teamDashboard = undefined;
     $scope.tsData = tsData;
     $scope.tabs = teamTabs;
-    $scope.testData = 0.32;
+    $scope.testData = 0.92;
+    $scope.pctData = [0.00, 0.00, 0.00, 0.00];
+    $scope.pctOptions = [];
+    $scope.pctOptionsData = [];
+    $scope.pctSelected = undefined;
+    $scope.progressChartSizeXLarge = 250;
+    $scope.progressChartSizeLarge = 200;
+    $scope.progressChartSizeMedium = 150;
+    $scope.progressChartSizeSmall = 100;
+    $scope.progressChartSizeXSmall = 80;
 
     //watches select of teams and updates info
     $scope.$watch('selectedTeam', function(newVal, oldVal){
@@ -40,9 +49,13 @@ class MainController {
         $scope.secondaryColor = $scope.league[$scope.selectedTeamId].secondaryColor;
         $scope.teamID = $scope.league[$scope.selectedTeamId].teamId;
 
+        $scope.pctSelected = $scope.pctOptions[0];
         $scope.getRoster($scope.teamID);
         $scope.getTeamStats($scope.teamID);
         $scope.getTeamDashboard($scope.teamID);
+        $timeout(function(){
+          $scope.updatePctData($scope.pctSelected);
+        }, 3000);
       }
     });
 
@@ -50,12 +63,17 @@ class MainController {
       if(newVal){
         $scope.getTeamSplitsData(newVal);
       }
+    });
 
-
+    $scope.$watch('pctSelected', function(newVal){
+      if($scope.selectedTeamId > -1){
+        $scope.updatePctData(newVal);
+      }
     });
 
     $scope.$watch('teamDashboard', function(newVal, oldVal){
       $scope.getTeamSplitsData($scope.selectedStat);
+      $scope.updatePctOptionsData();
     });
 
     $scope.getTeamDashboard = function(teamID){
@@ -181,6 +199,12 @@ class MainController {
     ];
     };
 
+    $scope.initPctSelect = function(){
+      for(var i = 0; i < $scope.tsData.length; i++){
+          $scope.pctOptions.push($scope.tsData[i].name);
+      }
+    };
+
     $scope.updateData = function(){
       var length = $scope.myData.length;
       $scope.myData = [];
@@ -194,7 +218,47 @@ class MainController {
        }
     };
 
+    $scope.updatePctData = function(val){
+      console.log('updating pctData')
+      if($scope.pctOptionsData.length > 0){
+        $scope.pctData = [];
+        for(var i = 0; i < $scope.tsData.length; i++){
+
+          if($scope.tsData[i].name == val){
+            $scope.pctData.push($scope.pctOptionsData[i].wPct);
+            $scope.pctData.push($scope.pctOptionsData[i].fgPct);
+            $scope.pctData.push($scope.pctOptionsData[i].fg3Pct);
+            $scope.pctData.push($scope.pctOptionsData[i].ftPct);
+          }
+        }
+      }
+      console.log($scope.pctData);
+    };
+
+    $scope.updatePctOptionsData = function(){
+
+      if($scope.teamDashboard){
+        $scope.pctOptionsData = [];
+        $scope.pctOptionsData.push($scope.teamDashboard.overallTeamDashboard[0]);
+        $scope.pctOptionsData.push($scope.teamDashboard.winsLossesTeamDashboard[0]);
+        $scope.pctOptionsData.push($scope.teamDashboard.winsLossesTeamDashboard[1]);
+        $scope.pctOptionsData.push($scope.teamDashboard.locationTeamDashboard[0]);
+        $scope.pctOptionsData.push($scope.teamDashboard.locationTeamDashboard[1]);
+        $scope.pctOptionsData.push($scope.teamDashboard.monthTeamDashboard[0]);
+        $scope.pctOptionsData.push($scope.teamDashboard.monthTeamDashboard[1]);
+        $scope.pctOptionsData.push($scope.teamDashboard.monthTeamDashboard[2]);
+        $scope.pctOptionsData.push($scope.teamDashboard.monthTeamDashboard[3]);
+        $scope.pctOptionsData.push($scope.teamDashboard.monthTeamDashboard[4]);
+        $scope.pctOptionsData.push($scope.teamDashboard.daysRestTeamDashboard[0]);
+        $scope.pctOptionsData.push($scope.teamDashboard.daysRestTeamDashboard[1]);
+        $scope.pctOptionsData.push($scope.teamDashboard.daysRestTeamDashboard[2]);
+      }
+
+
+    };
+
     $scope.initTabs();
+    $scope.initPctSelect();
 
   }
 

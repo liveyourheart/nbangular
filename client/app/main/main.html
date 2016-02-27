@@ -88,11 +88,15 @@ a{
 .progress-chart-bar{
   fill: {{secondaryColor}} !important;
 }
-.progress-chart-container{
+.progress-chart-wrapper{
   background: {{secondaryColor}};
 }
 .progress-chart-label{
   color: {{primaryColor}};
+}
+.progress-chart-select{
+  background: {{primaryColor}};
+  color: {{secondaryColor}};
 }
 .progress-chart-text{
   fill: {{secondaryColor}} !important;
@@ -327,34 +331,57 @@ a{
 
     <div class="row progress-chart-container text-center">
 
-        <div class="col-md-3 col-xs-6">
-          <h2 class="progress-chart-label">WIN%</h2>
-          <progress-chart data="testData" pc="primaryColor" sc="secondaryColor"></progress-chart>
-        </div>
+      <div class="progress-chart-wrapper col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+          <div class="row">
 
-        <div class="col-md-3 col-xs-6">
-          <h2 class="progress-chart-label">FG%</h2>
-          <progress-chart data="testData" pc="primaryColor" sc="secondaryColor"></progress-chart>
-        </div>
+            <div class="col-xs-6">
+              <h2 class="progress-chart-label">WIN&#37;</h2>
+              <progress-chart class="progress-directive-xsmall" data="pctData[0]" pc="primaryColor" sc="secondaryColor" w="progressChartSizeXSmall" h="progressChartSizeXSmall"></progress-chart>
+              <progress-chart class="progress-directive-small" data="pctData[0]" pc="primaryColor" sc="secondaryColor" w="progressChartSizeSmall" h="progressChartSizeSmall"></progress-chart>
+              <progress-chart class="progress-directive-medium" data="pctData[0]" pc="primaryColor" sc="secondaryColor" w="progressChartSizeMedium" h="progressChartSizeMedium"></progress-chart>
+              <progress-chart class="progress-directive-large" data="pctData[0]" pc="primaryColor" sc="secondaryColor" w="progressChartSizeLarge" h="progressChartSizeLarge"></progress-chart>
+              <progress-chart class="progress-directive-xlarge" data="pctData[0]" pc="primaryColor" sc="secondaryColor" w="progressChartSizeXLarge" h="progressChartSizeXLarge"></progress-chart>
+            </div>
 
-        <div class="col-md-3 col-xs-6">
-          <h2 class="progress-chart-label">3PT%</h2>
-          <progress-chart data="testData" pc="primaryColor" sc="secondaryColor"></progress-chart>
-        </div>
+            <div class="col-xs-6">
+              <h2 class="progress-chart-label">FG&#37;</h2>
+              <progress-chart class="progress-directive-xsmall" data="pctData[1]" pc="primaryColor" sc="secondaryColor" w="progressChartSizeXSmall" h="progressChartSizeXSmall"></progress-chart>
+              <progress-chart class="progress-directive-small" data="pctData[1]" pc="primaryColor" sc="secondaryColor" w="progressChartSizeSmall" h="progressChartSizeSmall"></progress-chart>
+              <progress-chart class="progress-directive-medium" data="pctData[1]" pc="primaryColor" sc="secondaryColor" w="progressChartSizeMedium" h="progressChartSizeMedium"></progress-chart>
+              <progress-chart class="progress-directive-large" data="pctData[1]" pc="primaryColor" sc="secondaryColor" w="progressChartSizeLarge" h="progressChartSizeLarge"></progress-chart>
+              <progress-chart class="progress-directive-xlarge" data="pctData[1]" pc="primaryColor" sc="secondaryColor" w="progressChartSizeXLarge" h="progressChartSizeXLarge"></progress-chart>
+            </div>
 
-        <div class="col-md-3 col-xs-6">
-          <h2 class="progress-chart-label">FT%</h2>
-          <progress-chart data="testData" pc="primaryColor" sc="secondaryColor"></progress-chart>
-        </div>
+          </div>
 
-        <div class="col-xs-6 col-xs-offset-3">
-          <select ng-model="selectedStat" name="stats" id="stat-select" class="form-control">
-            <option ng-repeat="stat in main.stats" value="{{stat.id}}">{{stat.name}}</option>
+          <div class="row">
+
+            <div class="col-xs-6">
+              <h2 class="progress-chart-label">3PT&#37;</h2>
+              <progress-chart class="progress-directive-xsmall" data="pctData[2]" pc="primaryColor" sc="secondaryColor" w="progressChartSizeXSmall" h="progressChartSizeXSmall"></progress-chart>
+              <progress-chart class="progress-directive-small" data="pctData[2]" pc="primaryColor" sc="secondaryColor" w="progressChartSizeSmall" h="progressChartSizeSmall"></progress-chart>
+              <progress-chart class="progress-directive-medium" data="pctData[2]" pc="primaryColor" sc="secondaryColor" w="progressChartSizeMedium" h="progressChartSizeMedium"></progress-chart>
+              <progress-chart class="progress-directive-large" data="pctData[2]" pc="primaryColor" sc="secondaryColor" w="progressChartSizeLarge" h="progressChartSizeLarge"></progress-chart>
+              <progress-chart class="progress-directive-xlarge" data="pctData[2]" pc="primaryColor" sc="secondaryColor" w="progressChartSizeXLarge" h="progressChartSizeXLarge"></progress-chart>
+            </div>
+
+            <div class="col-xs-6">
+              <h2 class="progress-chart-label">FT&#37;</h2>
+              <progress-chart class="progress-directive-xsmall" data="pctData[3]" pc="primaryColor" sc="secondaryColor" w="progressChartSizeXSmall" h="progressChartSizeXSmall"></progress-chart>
+              <progress-chart class="progress-directive-small" data="pctData[3]" pc="primaryColor" sc="secondaryColor" w="progressChartSizeSmall" h="progressChartSizeSmall"></progress-chart>
+              <progress-chart class="progress-directive-medium" data="pctData[3]" pc="primaryColor" sc="secondaryColor" w="progressChartSizeMedium" h="progressChartSizeMedium"></progress-chart>
+              <progress-chart class="progress-directive-large" data="pctData[3]" pc="primaryColor" sc="secondaryColor" w="progressChartSizeLarge" h="progressChartSizeLarge"></progress-chart>
+              <progress-chart class="progress-directive-xlarge" data="pctData[3]" pc="primaryColor" sc="secondaryColor" w="progressChartSizeXLarge" h="progressChartSizeXLarge"></progress-chart>
+            </div>
+
+          </div>
+          <select ng-model="pctSelected" name="pctStats" class="form-control progress-chart-select">
+            <option ng-repeat="option in pctOptions" value="{{option}}">{{option}}</option>
           </select>
-        </div>
-
+      </div>
 
     </div>
+
 
   </div>
 

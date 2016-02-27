@@ -9,14 +9,22 @@ angular.module('nbaPlaygroundApp')
       templateUrl: 'components/progressChart/progressChart.html',
       scope: {
         data: '=data',
-        chartid: '=chartid',
         primaryColor: '=pc',
-        secondaryColor: '=sc'
+        secondaryColor: '=sc',
+        width: '=w',
+        height: '=h',
+        fontSize: '=font'
       },
       link: function(scope, element, attrs) {
         var sc = scope.secondaryColor;
         var pc = scope.primaryColor;
-        var percent = scope.data * 100;
+        var percent;
+        if(scope.data >= 0 && scope.data >= 1){
+          percent = scope.data * 100;
+        } else{
+          percent = 0;
+        }
+
 
         var ratio = percent / 100;
 
@@ -26,11 +34,39 @@ angular.module('nbaPlaygroundApp')
           })
           .sort(null);
 
-        var w = 200,
-            h = 200;
+        var w = scope.width,
+            h = scope.height;
+
+        var fontSize, ir, textDy;
+
+        if(w >= 250){
+          fontSize= '60px';
+          ir = 65;
+          textDy = 25;
+        }else if(w >= 200){
+          fontSize='50px';
+          ir = 55;
+          textDy = 20;
+        }else if(w >= 150){
+          fontSize='40px';
+          ir = 45;
+          textDy = 15;
+        }else if(w >= 100){
+          fontSize='25px';
+          ir = 30;
+          textDy = 10;
+        }else if(w >= 80){
+          fontSize='20px';
+          ir = 25;
+          textDy = 10;
+        }else{
+          fontSize='18px';
+          ir = 25;
+          textDy = 10;
+        }
 
         var outerRadius = (w / 2);
-        var innerRadius = 65;
+        var innerRadius = ir;
 
         //background, arc, text color order
         var color = [sc, pc, pc];
@@ -143,15 +179,13 @@ angular.module('nbaPlaygroundApp')
         .attr({
             class: 'progress-chart-text',
             'text-anchor': 'middle',
-            dy: 25
+            dy: textDy
           })
           .style({
             fill: d3.rgb(color[2]),
-            'font-size': '60px',
+            'font-size': fontSize,
             'font-weight': 'bold',
-            filter: 'url(#inset-shadow)'
-
-
+            // filter: 'url(#inset-shadow)'
           });
 
         var oldValue = 0;
@@ -162,7 +196,13 @@ angular.module('nbaPlaygroundApp')
             var interpolateCount = d3.interpolate(oldValue, newValue);
             return function(t) {
               d.endAngle = interpolate(t);
-              middleCount.text(Math.floor(interpolateCount(t)) + '%');
+              var text;
+              if(percent == 100){
+                text = 100;
+              } else{
+                text = Math.round(percent) + '%';
+              }
+              middleCount.text(text);
               return arcLine(d);
             };
           });
@@ -178,6 +218,11 @@ angular.module('nbaPlaygroundApp')
           oldValue = percent;
           setTimeout(animate, 3000);
         };
+
+        var initSize = function(){
+
+        };
+
          setTimeout(animate,0);
       }
     };
