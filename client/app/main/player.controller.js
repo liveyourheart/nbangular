@@ -6,7 +6,7 @@ class PlayerController {
 
 //cpi - commonPlayerInfo
 //hs - headlineStats
-  constructor($http, league, playerTabs, playerSplits, playerSplitsStats, playerTenData, playerTenStats, $scope, $location, $stateParams) {
+  constructor($http, $timeout, league, playerTabs, playerSplits, playerSplitsStats, playerTenData, playerTenStats, $scope, $location, $stateParams) {
     this.$http = $http;
     this.league = league;
     this.stats = playerSplitsStats;
@@ -41,8 +41,10 @@ class PlayerController {
     $scope.progressChartSizeSmall = 80;
     $scope.progressChartSizeXSmall = 60;
     $scope.pctSelected10 = undefined;
-    $scope.pctData10 = [ 0.10, 0.10, 0.10];
-    $scope.testData = [ 0.10, 0.10, 0.00];
+    $scope.pctSelectedSplits = undefined;
+    $scope.pctData10 = [ 0.0, 0.0, 0.0];
+    $scope.pctDataSplits = [ 0.0, 0.0, 0.00];
+    $scope.pctStats10 = [];
     $scope.stats10Select = [];
     $scope.gameLogs = [];
 
@@ -76,6 +78,12 @@ class PlayerController {
     $scope.$watch('pctSelected10', function(){
       if($scope.gameLogs.length > 1){
         $scope.getPctDataTen();
+      }
+    });
+
+    $scope.$watch('pctSelectedSplits', function(){
+      if($scope.pctStats10.length > 0){
+        $scope.getPctDataSplits();
       }
     });
 
@@ -131,38 +139,41 @@ class PlayerController {
     $scope.getPlayerSplitsData = function(statId){
       var stat = statId;
       $scope.playerSplits = [];
-      var seasonAvg = $scope.seasonAvg[stat];
-      var careerAvg = $scope.careerAvg[stat];
-      var seasonHigh = $scope.seasonHigh[stat];
-      var careerHigh = $scope.careerHigh[stat];
+      var seasonAvg = $scope.seasonAvg;
+      var careerAvg = $scope.careerAvg;
+      var seasonHigh = $scope.seasonHigh;
+      var careerHigh = $scope.careerHigh;
+      $scope.pctStats10.push(seasonAvg, careerAvg, seasonHigh, careerHigh);
 
       $scope.playerSplits = [
         {
           name: 'Season Average',
-          stat: seasonAvg
+          stat: seasonAvg[stat]
         },
         {
           name: 'Career Average',
-          stat: careerAvg
+          stat: careerAvg[stat]
         },
         {
           name: 'Season High',
-          stat: seasonHigh
+          stat: seasonHigh[stat]
         },
         {
           name: 'Career High Average',
-          stat: careerHigh
+          stat: careerHigh[stat]
         }
 
       ];
+      if($scope.pctSelectedSplits === undefined){
+        $scope.pctSelectedSplits = $scope.playerSplits[0].name;
+      }
     };
 
     $scope.initTabs = function(){
       $scope.tabs[0].active = false;
       $scope.tabs[1].active = true;
       $scope.tabs[2].active = false;
-
-    }
+    };
 
     $scope.getPlayerTenData = function(statId){
       var stat = statId;
@@ -189,6 +200,17 @@ class PlayerController {
           $scope.pctData10.push($scope.gameLogs[i].ftPct);
         }
       }
+    };
+
+    $scope.getPctDataSplits = function(){
+      $scope.pctDataSplits = [];
+          for(var i = 0; i < $scope.playerSplits.length; i++){
+            if($scope.pctSelectedSplits === $scope.playerSplits[i].name){
+              $scope.pctDataSplits.push($scope.pctStats10[i].fgPct);
+              $scope.pctDataSplits.push($scope.pctStats10[i].fg3Pct);
+              $scope.pctDataSplits.push($scope.pctStats10[i].ftPct);
+            }
+          }
     };
 
     $scope.goHome = function(){
