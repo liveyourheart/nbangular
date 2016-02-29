@@ -188,6 +188,50 @@ PLAYER PAGE BACK BUTTON
   border-radius $display-border-radius
 
 /************************
+      Progress Chart
+************************/
+
+.progress-chart-label
+  font-size 500%
+  font-weight bold
+  margin-bottom 5px
+
+.progress-chart-label-player
+  font-size 400%
+  font-weight bold
+  margin-bottom 5px
+
+.progress-chart-container
+  margin-top 10px
+
+.progress-chart-select
+  margin-top 20px !important
+
+
+.progress-chart-wrapper
+  border-radius $display-border-radius
+  padding-bottom 30px
+
+.progress-directive-xsmall
+  display: none
+.progress-directive-small
+  display: none
+.progress-directive-medium
+  display: none
+.progress-directive-large
+  display: none
+.progress-directive-xlarge
+  display: inline
+
+.progress-title-player
+  border-radius $display-border-radius
+  padding 2px
+  margin-top 10px
+  h3
+    margin-top 5px
+    margin-bottom 5px
+
+/************************
         Bar Chart
 ************************/
 
@@ -250,6 +294,38 @@ PLAYER PAGE BACK BUTTON
      MEDIA QUERIES
 ************************/
 
+@media screen and (max-width: 700px)
+  .progress-directive-xsmall
+    display: none
+  .progress-directive-small
+    display: none
+  .progress-directive-medium
+    display: none
+  .progress-directive-large
+    display: inline
+  .progress-directive-xlarge
+    display: none
+  .progress-chart-label
+    font-size 450%
+  .progress-chart-label-player
+    font-size 300%
+
+@media screen and (max-width: 550px)
+  .progress-directive-xsmall
+    display: none
+  .progress-directive-small
+    display: none
+  .progress-directive-medium
+    display: inline
+  .progress-directive-large
+    display: none
+  .progress-directive-xlarge
+    display: none
+  .progress-chart-label
+    font-size 350%
+  .progress-chart-label-player
+    font-size 250%
+
 @media screen and (max-width: 500px)
   .circle-rank
     height: 150px;
@@ -283,6 +359,23 @@ PLAYER PAGE BACK BUTTON
     h4
       font-size 200%
 
+@media screen and (max-width: 450px)
+  .progress-directive-xsmall
+    display: none
+  .progress-directive-small
+    display: inline
+  .progress-directive-medium
+    display: none
+  .progress-directive-large
+    display: none
+  .progress-directive-xlarge
+    display: none
+
+  .progress-chart-label
+    font-size 300%
+  .progress-chart-label-player
+    font-size 200%
+
 @media screen and (max-width: 400px)
   .circle-rank
     height: 100px;
@@ -315,3 +408,30 @@ PLAYER PAGE BACK BUTTON
       font-weight bold
     h4
       font-size 100%
+
+  .progress-directive-xsmall
+    display: inline
+  .progress-directive-small
+    display: none
+  .progress-directive-medium
+    display: none
+  .progress-directive-large
+    display: none
+  .progress-directive-xlarge
+    display: none
+
+  .progress-chart-label
+    font-size 250%
+
+
+@media screen and (min-width: 701px)
+  .progress-directive-xsmall
+    display: none
+  .progress-directive-small
+    display: none
+  .progress-directive-medium
+    display: none
+  .progress-directive-large
+    display: none
+  .progress-directive-xlarge
+    display: inline
