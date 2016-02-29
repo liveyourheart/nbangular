@@ -55,7 +55,7 @@ class MainController {
         $scope.getTeamStats($scope.teamID);
         $scope.getTeamDashboard($scope.teamID);
         $timeout(function(){
-          $scope.updatePctData($scope.pctSelected);
+          $scope.getPctData($scope.pctSelected);
         }, 3000);
       }
     });
@@ -68,7 +68,7 @@ class MainController {
 
     $scope.$watch('pctSelected', function(newVal){
       if($scope.selectedTeamId > -1){
-        $scope.updatePctData(newVal);
+        $scope.getPctData(newVal);
       }
     });
 
@@ -206,21 +206,7 @@ class MainController {
       }
     };
 
-    $scope.updateData = function(){
-      var length = $scope.myData.length;
-      $scope.myData = [];
-       for(var i = 0; i < length; i++){
-         var obj = {
-           name: 'name ' + i,
-           stat: Math.floor((Math.random()*50)+1)
-         };
-
-         $scope.myData.push(obj);
-       }
-    };
-
-    $scope.updatePctData = function(val){
-      console.log('updating pctData')
+    $scope.getPctData = function(val){
       if($scope.pctOptionsData.length > 0){
         $scope.pctData = [];
         for(var i = 0; i < $scope.tsData.length; i++){
@@ -233,7 +219,6 @@ class MainController {
           }
         }
       }
-      console.log($scope.pctData);
     };
 
     $scope.updatePctOptionsData = function(){

@@ -23,10 +23,6 @@ class PlayerController {
     $scope.team = undefined;
     $scope.cpi = undefined;
     $scope.hs = undefined;
-    $scope.gameLogs = [{
-      gameDate: '01/01/2015',
-      matchup: 'team vs team'
-    }];
     $scope.leagueAvg = undefined;
     $scope.playerAvg = undefined;
     $scope.careerAvg = undefined;
@@ -44,8 +40,11 @@ class PlayerController {
     $scope.progressChartSizeMedium = 100;
     $scope.progressChartSizeSmall = 80;
     $scope.progressChartSizeXSmall = 60;
-    $scope.testData = [ 0.46, 0.34, 0.86];
+    $scope.pctSelected10 = undefined;
+    $scope.pctData10 = [ 0.10, 0.10, 0.10];
+    $scope.testData = [ 0.10, 0.10, 0.00];
     $scope.stats10Select = [];
+    $scope.gameLogs = [];
 
 
     $scope.$watch('selectedStatTen', function(newVal){
@@ -57,22 +56,26 @@ class PlayerController {
 
     $scope.$watch('selectedStatSplits', function(newVal){
       if(newVal && $scope.seasonAvg !== undefined){
-                console.log('selectedstattSplits');
         $scope.getPlayerSplitsData(newVal);
       }
     });
 
     $scope.$watch('seasonHigh', function(newVal){
       if(newVal){
-                console.log('seasonHigh');
         $scope.getPlayerSplitsData($scope.selectedStatSplits);
       }
     });
 
-    $scope.$watch('gameLogs', function(newVal){
+    $scope.$watch('gameLogs', function(){
       if($scope.gameLogs.length > 1){
-        console.log('hitting');
         $scope.getPlayerTenData($scope.selectedStatTen);
+        $scope.pctSelected10 = $scope.gameLogs[0].gameId;
+      }
+    });
+
+    $scope.$watch('pctSelected10', function(){
+      if($scope.gameLogs.length > 1){
+        $scope.getPctDataTen();
       }
     });
 
@@ -175,6 +178,17 @@ class PlayerController {
         $scope.player10.push(obj);
       }
 
+    };
+
+    $scope.getPctDataTen = function(){
+      $scope.pctData10 = [];
+      for(var i = 0; i < $scope.gameLogs.length; i++){
+        if($scope.gameLogs[i].gameId === $scope.pctSelected10){
+          $scope.pctData10.push($scope.gameLogs[i].fgPct);
+          $scope.pctData10.push($scope.gameLogs[i].fg3Pct);
+          $scope.pctData10.push($scope.gameLogs[i].ftPct);
+        }
+      }
     };
 
     $scope.goHome = function(){
