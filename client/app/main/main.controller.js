@@ -34,6 +34,7 @@ class MainController {
     $scope.progressChartSizeMedium = 150;
     $scope.progressChartSizeSmall = 100;
     $scope.progressChartSizeXSmall = 80;
+    $scope.progressChartSizeXXSmall = 60;
 
     //watches select of teams and updates info
     $scope.$watch('selectedTeam', function(newVal, oldVal){

@@ -60,9 +60,9 @@ angular.module('nbaPlaygroundApp')
           ir = 25;
           textDy = 10;
         }else{
-          fontSize='18px';
-          ir = 25;
-          textDy = 10;
+          fontSize='15px';
+          ir = 18;
+          textDy = 7;
         }
 
         var outerRadius = (w / 2);

@@ -23,7 +23,10 @@ class PlayerController {
     $scope.team = undefined;
     $scope.cpi = undefined;
     $scope.hs = undefined;
-    $scope.gameLogs = [];
+    $scope.gameLogs = [{
+      gameDate: '01/01/2015',
+      matchup: 'team vs team'
+    }];
     $scope.leagueAvg = undefined;
     $scope.playerAvg = undefined;
     $scope.careerAvg = undefined;
@@ -36,28 +39,39 @@ class PlayerController {
     $scope.player10 = playerTenData;
     $scope.selectedStatSplits = this.stats[0].id;
     $scope.selectedStatTen = this.stats10[0].id;
+    $scope.progressChartSizeXLarge = 160;
+    $scope.progressChartSizeLarge = 125;
+    $scope.progressChartSizeMedium = 100;
+    $scope.progressChartSizeSmall = 80;
+    $scope.progressChartSizeXSmall = 60;
+    $scope.testData = [ 0.46, 0.34, 0.86];
+    $scope.stats10Select = [];
 
 
     $scope.$watch('selectedStatTen', function(newVal){
-      if(newVal){
+      if(newVal && $scope.gameLogs.length > 1){
+        console.log('selectedstatt10');
         $scope.getPlayerTenData(newVal);
       }
     });
 
     $scope.$watch('selectedStatSplits', function(newVal){
       if(newVal && $scope.seasonAvg !== undefined){
+                console.log('selectedstattSplits');
         $scope.getPlayerSplitsData(newVal);
       }
     });
 
     $scope.$watch('seasonHigh', function(newVal){
       if(newVal){
+                console.log('seasonHigh');
         $scope.getPlayerSplitsData($scope.selectedStatSplits);
       }
     });
 
     $scope.$watch('gameLogs', function(newVal){
-      if(newVal){
+      if($scope.gameLogs.length > 1){
+        console.log('hitting');
         $scope.getPlayerTenData($scope.selectedStatTen);
       }
     });
