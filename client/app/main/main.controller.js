@@ -140,6 +140,8 @@ class MainController {
       var dec = $scope.teamDashboard.monthTeamDashboard[2][stat];
       var jan = $scope.teamDashboard.monthTeamDashboard[3][stat];
       var feb = $scope.teamDashboard.monthTeamDashboard[4][stat];
+      var mar = $scope.teamDashboard.monthTeamDashboard[5][stat];
+      var apr = $scope.teamDashboard.monthTeamDashboard[6][stat];
       var b2b = $scope.teamDashboard.daysRestTeamDashboard[0][stat];
       var day1 = $scope.teamDashboard.daysRestTeamDashboard[1][stat];
       var day2 = $scope.teamDashboard.daysRestTeamDashboard[2][stat];
@@ -184,6 +186,14 @@ class MainController {
       {
         name: 'In February',
         stat: feb
+      },
+      {
+        name: 'In March',
+        stat: mar
+      },
+      {
+        name: 'In April',
+        stat: apr
       },
       {
         name: 'In Back To Backs',
@@ -235,6 +245,8 @@ class MainController {
         $scope.pctOptionsData.push($scope.teamDashboard.monthTeamDashboard[2]);
         $scope.pctOptionsData.push($scope.teamDashboard.monthTeamDashboard[3]);
         $scope.pctOptionsData.push($scope.teamDashboard.monthTeamDashboard[4]);
+        $scope.pctOptionsData.push($scope.teamDashboard.monthTeamDashboard[5]);
+        $scope.pctOptionsData.push($scope.teamDashboard.monthTeamDashboard[6]);
         $scope.pctOptionsData.push($scope.teamDashboard.daysRestTeamDashboard[0]);
         $scope.pctOptionsData.push($scope.teamDashboard.daysRestTeamDashboard[1]);
         $scope.pctOptionsData.push($scope.teamDashboard.daysRestTeamDashboard[2]);
