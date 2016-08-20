@@ -13,7 +13,7 @@ class MainController {
     $scope.selectedTeam = 'Pick a Team';
     $scope.selectedTeamId = -1;
     $scope.league = league;
-    $scope.teamImage = 'nbangular.c83fa3b7.png';
+    $scope.teamImage = 'nbangular.png';
     $scope.primaryColor = '#797979';
     $scope.secondaryColor = '#fff';
     $scope.teamID = 1610612760;
